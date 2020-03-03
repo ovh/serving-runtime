@@ -1,0 +1,13 @@
+*/target/**
+**/*.iml
+**/tmp
+.git
+examples/
+dockerfiles/
+**.md
+.idea
+MAINTAINERS
+AUTHORS
+CONTRIBUTORS
+LICENSE
+VERSION

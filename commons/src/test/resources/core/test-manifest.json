@@ -1,0 +1,12 @@
+{
+  "type": "test",
+  "test_value": "someTestString",
+  "inputs": [
+    {
+      "name": "int",
+      "type": "integer"
+    }
+  ],
+  "outputs": [
+  ]
+}

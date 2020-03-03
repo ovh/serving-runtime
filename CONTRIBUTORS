@@ -1,0 +1,18 @@
+# This is the official list of people who can contribute
+# (and typically have contributed) code to the OVH Serving Runtime repository.
+#
+# Names should be added to this file only after verifying that
+# the individual or the individual's organization has agreed to
+# the appropriate CONTRIBUTING.md file.
+#
+# Names should be added to this file like so:
+# Individual's name <submission email address>
+# Individual's name <submission email address>qqqqhtop
+
+#
+# Please keep the list sorted.
+#
+
+Adrien Carreira <adrien.carreira@corp.ovh.com>
+Christophe Rannou <christophe.rannou@corp.ovh.com>
+Maël Le Gal <mael.le-gal@corp.ovh.com>

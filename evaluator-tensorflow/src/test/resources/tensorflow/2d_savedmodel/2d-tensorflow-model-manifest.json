@@ -1,0 +1,42 @@
+{
+  "saved_model_uri": "src/test/resources/tensorflow/2d_savedmodel/2d_savedmodel.zip",
+  "batch_size": 2,
+  "inputs": [
+    {
+      "name": "input",
+      "shape": "(?, 8)",
+      "type": "float",
+      "fields": [
+        {
+          "name": "scaled_imputed_t",
+          "index": 0
+        },
+        {
+          "name": "scaled_imputed_label",
+          "index": 1
+        },
+        {
+          "name": "scaled_imputed_feature1",
+          "index": 2
+        },
+        {
+          "name": "scaled_imputed_feature2",
+          "index": 3
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "shape": "(?, 1)",
+      "type": "float",
+      "fields": [
+        {
+          "name": "scaled_imputed_label_predicted",
+          "index": 0
+        }
+      ]
+    }
+  ]
+}

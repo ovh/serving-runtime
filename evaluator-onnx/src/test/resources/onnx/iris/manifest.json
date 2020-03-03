@@ -1,0 +1,64 @@
+{
+  "onnx_model_uri": "src/test/resources/onnx/iris/iris.onnx",
+  "batch_size": 1,
+  "inputs": [
+    {
+      "name": "float_input",
+      "shape": "(?, 4)",
+      "type": "float",
+      "fields": [
+        {
+          "name": "sepal_length",
+          "index": 0
+        },
+        {
+          "name": "sepal_width",
+          "index": 1
+        },
+        {
+          "name": "petal_length",
+          "index": 2
+        },
+        {
+          "name": "petal_width",
+          "index": 3
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output_label",
+      "shape": "(?)",
+      "type": "long",
+      "fields": [
+        {
+          "name": "classification",
+          "type": "long"
+        }
+      ]
+    },
+    {
+      "name": "output_probability",
+      "shape": "(?, 3)",
+      "type": "float",
+      "fields": [
+        {
+          "name": "probability(0)",
+          "index": 0,
+          "key": 0
+        },
+        {
+          "name": "probability(1)",
+          "index": 1,
+          "key": 1
+        },
+        {
+          "name": "probability(2)",
+          "index": 2,
+          "key": 2
+        }
+      ]
+    }
+  ]
+}

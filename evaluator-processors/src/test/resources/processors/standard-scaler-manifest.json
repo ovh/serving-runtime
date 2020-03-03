@@ -1,0 +1,20 @@
+{
+  "mean_std_map": {
+    "value": {
+      "mean": 7.0,
+      "std": 2.0
+    }
+  },
+  "inputs": [
+    {
+      "name": "value",
+      "type": "double"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "scaled_value",
+      "type": "double"
+    }
+  ]
+}

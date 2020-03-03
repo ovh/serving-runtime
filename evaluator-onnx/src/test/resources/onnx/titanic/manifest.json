@@ -1,0 +1,90 @@
+{
+  "onnx_model_uri": "src/test/resources/onnx/titanic/pipeline_titanic.onnx",
+  "batch_size": 1,
+  "inputs": [
+    {
+      "name": "pclass",
+      "shape": "(?, 1)",
+      "type": "string",
+      "fields": [
+        {
+          "name": "pclass",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "sex",
+      "shape": "(?, 1)",
+      "type": "string",
+      "fields": [
+        {
+          "name": "sex",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "age",
+      "shape": "(?, 1)",
+      "type": "float",
+      "fields": [
+        {
+          "name": "age",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "fare",
+      "shape": "(?, 1)",
+      "type": "float",
+      "fields": [
+        {
+          "name": "fare",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "embarked",
+      "shape": "(?, 1)",
+      "type": "string",
+      "fields": [
+        {
+          "name": "embarked",
+          "index": 0
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output_label",
+      "shape": "(?)",
+      "type": "long",
+      "fields": [
+        {
+          "name": "classification"
+        }
+      ]
+    },
+    {
+      "name": "output_probability",
+      "shape": "(?, 2)",
+      "type": "float",
+      "fields": [
+        {
+          "name": "probability(0)",
+          "index": 0,
+          "key": 0
+        },
+        {
+          "name": "probability(1)",
+          "index": 1,
+          "key": 1
+        }
+      ]
+    }
+  ]
+}

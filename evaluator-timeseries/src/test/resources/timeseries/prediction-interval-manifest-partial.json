@@ -1,0 +1,30 @@
+{
+  "residuals_std": {
+    "label": 0.12,
+    "label_t+1": 0.3
+  },
+  "inputs": [
+    {
+      "name": "label",
+      "type": "double"
+    },
+    {
+      "name": "label_t+1",
+      "type": "double"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "label_quantile_inf",
+      "type": "double"
+    },
+    {
+      "name": "label_quantile_sup",
+      "type": "double"
+    },
+    {
+      "name": "label_t+1_quantile_sup",
+      "type": "double"
+    }
+  ]
+}

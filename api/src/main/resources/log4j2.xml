@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{[%d][%-5level ][%logger{3}]}{STYLE=Logback} - %msg%n"/>
+        </Console>
+    </appenders>
+    <loggers>
+        <root level="warn">
+            <appender-ref ref="Console"/>
+        </root>
+        <Logger name="org.eclipse.jetty.server.Server" level="info"/>
+        <Logger name="com.ovh.mls" level="info"/>
+    </loggers>
+</configuration>

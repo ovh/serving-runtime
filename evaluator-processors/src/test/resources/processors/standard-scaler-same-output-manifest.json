@@ -1,0 +1,32 @@
+{
+  "mean_std_map": {
+    "value": {
+      "mean": 5.0,
+      "std": 2.0
+    },
+    "label": {
+      "mean": 10.0,
+      "std": 4.0
+    }
+  },
+  "inputs": [
+    {
+      "name": "value",
+      "type": "double"
+    },
+    {
+      "name": "label",
+      "type": "double"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "value",
+      "type": "double"
+    },
+    {
+      "name": "label",
+      "type": "double"
+    }
+  ]
+}

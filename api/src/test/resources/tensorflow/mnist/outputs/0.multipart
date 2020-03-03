@@ -1,0 +1,21 @@
+--jetty1735298322k66b8jwv
+Content-Type: application/json
+Content-Disposition: form-data; name="class_ids"; filename="class_ids.json"
+
+0
+--jetty1735298322k66b8jwv
+Content-Type: application/json
+Content-Disposition: form-data; name="logits"; filename="logits.json"
+
+[3435.8083,-64.110596,107.91369,-479.41333,-688.7862,-592.7844,-576.5078,-386.3663,-845.04346,-607.1198]
+--jetty1735298322k66b8jwv
+Content-Type: application/json
+Content-Disposition: form-data; name="classes"; filename="classes.json"
+
+"0"
+--jetty1735298322k66b8jwv
+Content-Type: application/json
+Content-Disposition: form-data; name="probabilities"; filename="probabilities.json"
+
+[1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+--jetty1735298322k66b8jwv--

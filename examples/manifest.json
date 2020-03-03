@@ -1,0 +1,44 @@
+{
+  "type": "tensorflow",
+  "saved_model_uri": "2d_savedmodel.zip",
+  "batch_size": 2,
+  "inputs": {
+    "dense_1_input:0": {
+      "shape": "(?, 8)",
+      "fields": [
+        {
+          "name": "scaled_imputed_t",
+          "type": "float",
+          "index": 0
+        },
+        {
+          "name": "scaled_imputed_label",
+          "type": "float",
+          "index": 1
+        },
+        {
+          "name": "scaled_imputed_feature1",
+          "type": "float",
+          "index": 2
+        },
+        {
+          "name": "scaled_imputed_feature2",
+          "type": "float",
+          "index": 3
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "dense_2/BiasAdd:0": {
+      "shape": "(?, 1)",
+      "fields": [
+        {
+          "name": "scaled_imputed_label_predicted",
+          "type": "double",
+          "index": 0
+        }
+      ]
+    }
+  }
+}
