@@ -39,7 +39,7 @@ class OnnxEvaluatorIrisTest {
             LOADER.getResourceAsStream("onnx/iris/manifest.json"),
             OnnxEvaluatorManifest.class
         );
-        onnxEvaluator = OnnxEvaluator.create(manifest, "");
+        onnxEvaluator = OnnxEvaluator.create(manifest, "./");
     }
 
     @Test
@@ -73,9 +73,9 @@ class OnnxEvaluatorIrisTest {
         Tensor probability2Tensor = output.getTensor("probability(2)");
         assertArrayEquals(new int[]{1}, probability2Tensor.getShapeAsArray());
 
-        assertEquals(0.0011569946072995663, ((float[]) probability0Tensor.getData())[0], 0.00000001);
-        assertEquals(0.3964444100856781, ((float[]) probability1Tensor.getData())[0], 0.00000001);
-        assertEquals(0.6023985743522644, ((float[]) probability2Tensor.getData())[0], 0.00000001);
+        assertEquals(0.0011569946072995663, ((float[]) probability0Tensor.getData())[0], 0.000001);
+        assertEquals(0.3964444100856781, ((float[]) probability1Tensor.getData())[0], 0.000001);
+        assertEquals(0.6023985743522644, ((float[]) probability2Tensor.getData())[0], 0.000001);
     }
 
     @Test
@@ -113,13 +113,13 @@ class OnnxEvaluatorIrisTest {
 
         assertArrayEquals(new long[]{2, 2}, classificationTensorData);
 
-        assertEquals(0.0028399815782904625, probability0Data[0], 0.00000001);
-        assertEquals(0.31503045558929443, probability1Data[0], 0.00000001);
-        assertEquals(0.6821296215057373, probability2Data[0], 0.00000001);
+        assertEquals(0.0028399815782904625, probability0Data[0], 0.000001);
+        assertEquals(0.31503045558929443, probability1Data[0], 0.000001);
+        assertEquals(0.6821296215057373, probability2Data[0], 0.000001);
 
-        assertEquals(0.0002457280352246016, probability0Data[1], 0.00000001);
-        assertEquals(0.4622795879840851, probability1Data[1], 0.00000001);
-        assertEquals(0.5374746918678284, probability2Data[1], 0.00000001);
+        assertEquals(0.0002457280352246016, probability0Data[1], 0.000001);
+        assertEquals(0.4622795879840851, probability1Data[1], 0.000001);
+        assertEquals(0.5374746918678284, probability2Data[1], 0.000001);
     }
 
     @Test
@@ -155,6 +155,5 @@ class OnnxEvaluatorIrisTest {
         executor.shutdown();
         executor.awaitTermination(1, TimeUnit.MINUTES);
     }
-
 
 }

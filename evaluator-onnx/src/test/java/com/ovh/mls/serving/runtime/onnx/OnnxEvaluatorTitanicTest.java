@@ -32,7 +32,7 @@ class OnnxEvaluatorTitanicTest {
             LOADER.getResourceAsStream("onnx/titanic/manifest.json"),
             OnnxEvaluatorManifest.class
         );
-        onnxEvaluator = OnnxEvaluator.create(manifest, "");
+        onnxEvaluator = OnnxEvaluator.create(manifest, "./");
     }
 
     @Test
@@ -58,8 +58,8 @@ class OnnxEvaluatorTitanicTest {
         assertArrayEquals(new int[]{1}, probability1.getShapeAsArray());
 
         assertEquals(0, ((long[]) classificationTensor.getData())[0]);
-        assertEquals(0.8032850623130798, ((float[]) probability0.getData())[0], 0.00000001);
-        assertEquals(0.19671493768692017, ((float[]) probability1.getData())[0], 0.00000001);
+        assertEquals(0.8032850623130798, ((float[]) probability0.getData())[0], 0.000001);
+        assertEquals(0.19671493768692017, ((float[]) probability1.getData())[0], 0.000001);
     }
 
     @Test
@@ -85,11 +85,11 @@ class OnnxEvaluatorTitanicTest {
         assertArrayEquals(new int[]{2}, probability1.getShapeAsArray());
 
         assertEquals(0, ((long[]) classificationTensor.getData())[0]);
-        assertEquals(0.8032850623130798, ((float[]) probability0.getData())[0]);
-        assertEquals(0.19671493768692017, ((float[]) probability1.getData())[0]);
+        assertEquals(0.8032850623130798, ((float[]) probability0.getData())[0], 0.000001);
+        assertEquals(0.19671493768692017, ((float[]) probability1.getData())[0], 0.000001);
 
-        assertEquals(1, ((long[]) classificationTensor.getData())[1]);
-        assertEquals(0.3988564610481262, ((float[]) probability0.getData())[1]);
-        assertEquals(0.6011435389518738, ((float[]) probability1.getData())[1]);
+        assertEquals(1, ((long[]) classificationTensor.getData())[1], 0.000001);
+        assertEquals(0.3988564610481262, ((float[]) probability0.getData())[1], 0.000001);
+        assertEquals(0.6011435389518738, ((float[]) probability1.getData())[1], 0.000001);
     }
 }

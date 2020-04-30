@@ -1,0 +1,16 @@
+{
+  "age": [[39]],
+  "workclass": [["State-gov"]],
+  "fnlwgt": [[77516]],
+  "education": [["qsdfgqsfdqs"]],
+  "education-num": [[13]],
+  "marital-status": [["Married-civ-spouse"]],
+  "occupation": [["Adm-clerical"]],
+  "relationship": [["Not-in-family"]],
+  "race": [["White"]],
+  "sex" :[["Male"]],
+  "capital-gain": [[2174]],
+  "capital-loss": [[0]],
+  "hours-per-week": [[40]],
+  "native-country": [["United-States"]]
+}
