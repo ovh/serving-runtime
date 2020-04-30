@@ -52,12 +52,19 @@ public class TensorShape {
         return shape.length != 0 && shape[0] == -1;
     }
 
-    public int[] getNewShape(int batchSize) {
+    public int[] getNewShape(int batchSize, Integer replaceMissingBy) {
         final int[] newShape = Arrays.copyOf(shape, shape.length);
 
         if (handleBatch()) {
             newShape[0] = batchSize;
         }
+
+        for (int i = 0; i < newShape.length; i++) {
+            if (newShape[i] < 0 && replaceMissingBy != null) {
+                newShape[i] = replaceMissingBy;
+            }
+        }
+
         return newShape;
     }
 

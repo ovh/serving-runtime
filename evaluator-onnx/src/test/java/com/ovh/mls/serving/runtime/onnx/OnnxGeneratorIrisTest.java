@@ -58,9 +58,9 @@ class OnnxGeneratorIrisTest {
         assertArrayEquals(new int[]{1, 3}, outputProb0Tensor.getShapeAsArray());
 
         assertEquals(2, ((long[]) outputLabelTensor.getData())[0]);
-        assertEquals(0.0011569946072995663, ((float[][]) outputProb0Tensor.getData())[0][0], 0.00000001);
-        assertEquals(0.3964444100856781, ((float[][]) outputProb0Tensor.getData())[0][1], 0.00000001);
-        assertEquals(0.6023985743522644, ((float[][]) outputProb0Tensor.getData())[0][2], 0.00000001);
+        assertEquals(0.0011569946072995663, ((float[][]) outputProb0Tensor.getData())[0][0], 0.000001);
+        assertEquals(0.3964444100856781, ((float[][]) outputProb0Tensor.getData())[0][1], 0.000001);
+        assertEquals(0.6023985743522644, ((float[][]) outputProb0Tensor.getData())[0][2], 0.000001);
 
     }
 
@@ -83,12 +83,12 @@ class OnnxGeneratorIrisTest {
         assertArrayEquals(new int[]{2, 3}, outputProb0Tensor.getShapeAsArray());
 
         assertEquals(2, ((long[]) outputLabelTensor.getData())[0]);
-        assertEquals(0.0028399815782904625, ((float[][]) outputProb0Tensor.getData())[0][0], 0.00000001);
-        assertEquals(0.31503045558929443, ((float[][]) outputProb0Tensor.getData())[0][1], 0.00000001);
-        assertEquals(0.6821296215057373, ((float[][]) outputProb0Tensor.getData())[0][2], 0.00000001);
+        assertEquals(0.0028399815782904625, ((float[][]) outputProb0Tensor.getData())[0][0], 0.000001);
+        assertEquals(0.31503045558929443, ((float[][]) outputProb0Tensor.getData())[0][1], 0.000001);
+        assertEquals(0.6821296215057373, ((float[][]) outputProb0Tensor.getData())[0][2], 0.000001);
         assertEquals(2, ((long[]) outputLabelTensor.getData())[1]);
-        assertEquals(0.0002457280352246016, ((float[][]) outputProb0Tensor.getData())[1][0], 0.00000001);
-        assertEquals(0.4622795879840851, ((float[][]) outputProb0Tensor.getData())[1][1], 0.00000001);
-        assertEquals(0.5374746918678284, ((float[][]) outputProb0Tensor.getData())[1][2], 0.00000001);
+        assertEquals(0.0002457280352246016, ((float[][]) outputProb0Tensor.getData())[1][0], 0.000001);
+        assertEquals(0.4622795879840851, ((float[][]) outputProb0Tensor.getData())[1][1], 0.000001);
+        assertEquals(0.5374746918678284, ((float[][]) outputProb0Tensor.getData())[1][2], 0.000001);
     }
 }

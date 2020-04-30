@@ -55,8 +55,8 @@ class OnnxGeneratorTitanicTest {
         assertArrayEquals(new int[]{1, 2}, outputProbability0.getShapeAsArray());
 
         assertEquals(0, ((long[]) outputLabel.getData())[0]);
-        assertEquals(0.8032850623130798, ((float[][]) outputProbability0.getData())[0][0], 0.00000001);
-        assertEquals(0.19671493768692017, ((float[][]) outputProbability0.getData())[0][1], 0.00000001);
+        assertEquals(0.8032850623130798, ((float[][]) outputProbability0.getData())[0][0], 0.0000001);
+        assertEquals(0.19671493768692017, ((float[][]) outputProbability0.getData())[0][1], 0.0000001);
     }
 
     @Test
@@ -80,10 +80,10 @@ class OnnxGeneratorTitanicTest {
         assertArrayEquals(new int[]{2, 2}, outputProbability0.getShapeAsArray());
 
         assertEquals(0, ((long[]) outputLabel.getData())[0]);
-        assertEquals(0.8032850623130798, ((float[][]) outputProbability0.getData())[0][0], 0.00000001);
-        assertEquals(0.19671493768692017, ((float[][]) outputProbability0.getData())[0][1], 0.00000001);
+        assertEquals(0.8032850623130798, ((float[][]) outputProbability0.getData())[0][0], 0.0000001);
+        assertEquals(0.19671493768692017, ((float[][]) outputProbability0.getData())[0][1], 0.0000001);
         assertEquals(1, ((long[]) outputLabel.getData())[1]);
-        assertEquals(0.3988564610481262, ((float[][]) outputProbability0.getData())[1][0], 0.00000001);
-        assertEquals(0.6011435389518738, ((float[][]) outputProbability0.getData())[1][1], 0.00000001);
+        assertEquals(0.3988564610481262, ((float[][]) outputProbability0.getData())[1][0], 0.0000001);
+        assertEquals(0.6011435389518738, ((float[][]) outputProbability0.getData())[1][1], 0.0000001);
     }
 }

@@ -39,7 +39,7 @@ class OnnxEvaluatorIrisSameOutputTest {
             LOADER.getResourceAsStream("onnx/iris/manifest-same-output.json"),
             OnnxEvaluatorManifest.class
         );
-        onnxEvaluator = OnnxEvaluator.create(manifest, "");
+        onnxEvaluator = OnnxEvaluator.create(manifest, "./");
     }
 
     @Test
@@ -68,9 +68,9 @@ class OnnxEvaluatorIrisSameOutputTest {
         assertArrayEquals(new int[]{1}, petalWidthTensor.getShapeAsArray());
 
         assertEquals(2, ((long[]) sepalLengthTensor.getData())[0]);
-        assertEquals(0.0011569946072995663, ((float[]) sepalWidthTensor.getData())[0], 0.00000001);
-        assertEquals(0.3964444100856781, ((float[]) petalLengthTensor.getData())[0], 0.00000001);
-        assertEquals(0.6023985743522644, ((float[]) petalWidthTensor.getData())[0], 0.00000001);
+        assertEquals(0.0011569946072995663, ((float[]) sepalWidthTensor.getData())[0], 0.000001);
+        assertEquals(0.3964444100856781, ((float[]) petalLengthTensor.getData())[0], 0.000001);
+        assertEquals(0.6023985743522644, ((float[]) petalWidthTensor.getData())[0], 0.000001);
     }
 
     @Test
@@ -99,14 +99,14 @@ class OnnxEvaluatorIrisSameOutputTest {
         assertArrayEquals(new int[]{2}, petalWidthTensor.getShapeAsArray());
 
         assertEquals(2, ((long[]) sepalLengthTensor.getData())[0]);
-        assertEquals(0.0028399815782904625, ((float[]) sepalWidthTensor.getData())[0], 0.00000001);
-        assertEquals(0.31503045558929443, ((float[]) petalLengthTensor.getData())[0], 0.00000001);
-        assertEquals(0.6821296215057373, ((float[]) petalWidthTensor.getData())[0], 0.00000001);
+        assertEquals(0.0028399815782904625, ((float[]) sepalWidthTensor.getData())[0], 0.000001);
+        assertEquals(0.31503045558929443, ((float[]) petalLengthTensor.getData())[0], 0.000001);
+        assertEquals(0.6821296215057373, ((float[]) petalWidthTensor.getData())[0], 0.000001);
 
         assertEquals(2, ((long[]) sepalLengthTensor.getData())[1]);
-        assertEquals(0.0002457280352246016, ((float[]) sepalWidthTensor.getData())[1], 0.00000001);
-        assertEquals(0.4622795879840851, ((float[]) petalLengthTensor.getData())[1], 0.00000001);
-        assertEquals(0.5374746918678284, ((float[]) petalWidthTensor.getData())[1], 0.00000001);
+        assertEquals(0.0002457280352246016, ((float[]) sepalWidthTensor.getData())[1], 0.000001);
+        assertEquals(0.4622795879840851, ((float[]) petalLengthTensor.getData())[1], 0.000001);
+        assertEquals(0.5374746918678284, ((float[]) petalWidthTensor.getData())[1], 0.000001);
 
     }
 

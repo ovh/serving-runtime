@@ -71,7 +71,7 @@ public class OnnxEvaluator extends AbstractTensorEvaluator {
                     ONNX_ENVIRONMENT,
                     createArray(tensorField.getType(),
                         tensorField.getTensorShape(),
-                        1)
+                        1, 1)
                 );
                 tensors.put(entry.getKey(), onnxTensor);
                 handleBatch = tensorField.getTensorShape().handleBatch();
@@ -144,8 +144,8 @@ public class OnnxEvaluator extends AbstractTensorEvaluator {
         }
     }
 
-    private static Object createArray(DataType type, TensorShape shape, int batchSize) {
-        final Object array = Array.newInstance(type.getJavaClass(), shape.getNewShape(batchSize));
+    private static Object createArray(DataType type, TensorShape shape, int batchSize, Integer replaceMissingBy) {
+        final Object array = Array.newInstance(type.getJavaClass(), shape.getNewShape(batchSize, replaceMissingBy));
 
         if (type == DataType.STRING) {
             // To avoid onnx c binding error, we fill the array with an empty string
@@ -201,7 +201,7 @@ public class OnnxEvaluator extends AbstractTensorEvaluator {
         OnnxSequence sequence
     ) throws OrtException {
         var batchSize = sequence.getInfo().length;
-        var array = createArray(tensorField.getType(), tensorField.getTensorShape(), batchSize);
+        var array = createArray(tensorField.getType(), tensorField.getTensorShape(), batchSize, null);
         var sequenceResults = sequence.getValue();
 
         if (!sequence.getInfo().isSequenceOfMaps() || sequence.getInfo().mapInfo.keyType != OnnxJavaType.INT64) {
