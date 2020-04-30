@@ -38,6 +38,10 @@ build:
 test:
 	mvn -B verify -DtrimStackTrace=false -Devaluator.tensorflow.h5_converter.path=$(H5_CONVERTER) -P$(MAVEN_PROFILE)
 
+.PHONY: deploy
+deploy:
+	mvn -B deploy -DskipTests -P$(MAVEN_PROFILE)
+
 .PHONY: initialize
 initialize:
 	make -C evaluator-tensorflow/h5_converter build
