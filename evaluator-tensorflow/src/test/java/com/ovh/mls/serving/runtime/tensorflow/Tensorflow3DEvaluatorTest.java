@@ -38,7 +38,7 @@ public class Tensorflow3DEvaluatorTest {
             LOADER.getResourceAsStream("tensorflow/3d_savedmodel/3d-tensorflow-model-manifest.json"),
             TensorflowEvaluatorManifest.class
         );
-        tensorFlowEvaluator = TensorflowEvaluator.create(manifest, "");
+        tensorFlowEvaluator = TensorflowEvaluator.create(manifest, "./");
     }
 
     @Test
