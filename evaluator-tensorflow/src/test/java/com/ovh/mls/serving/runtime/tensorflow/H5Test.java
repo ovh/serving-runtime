@@ -22,8 +22,8 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestH5 {
-    private static final ClassLoader LOADER = TestH5.class.getClassLoader();
+public class H5Test {
+    private static final ClassLoader LOADER = H5Test.class.getClassLoader();
     private static final Config config = ConfigFactory.load().getConfig("evaluator");
     private static final EvaluatorUtil MAPPER = new EvaluatorUtil(config);
 
