@@ -55,7 +55,9 @@ public class TableUtils {
                 case FLOAT:
                     if (exist) {
                         if (!(table.column(output.getName()) instanceof FloatColumn)) {
-                            throw new EvaluationException("Column %s already exist with a different type");
+                            throw new EvaluationException(
+                                String.format("Column %s already exist with a different type", output.getName())
+                            );
                         }
                     } else {
                         table.addColumns(FloatColumn.create(output.getName(), rowCount));
@@ -64,7 +66,9 @@ public class TableUtils {
                 case DOUBLE:
                     if (exist) {
                         if (!(table.column(output.getName()) instanceof DoubleColumn)) {
-                            throw new EvaluationException("Column %s already exist with a different type");
+                            throw new EvaluationException(
+                                String.format("Column %s already exist with a different type", output.getName())
+                            );
                         }
                     } else {
                         table.addColumns(DoubleColumn.create(output.getName(), rowCount));
@@ -73,7 +77,9 @@ public class TableUtils {
                 case INTEGER:
                     if (exist) {
                         if (!(table.column(output.getName()) instanceof IntColumn)) {
-                            throw new EvaluationException("Column %s already exist with a different type");
+                            throw new EvaluationException(
+                                String.format("Column %s already exist with a different type", output.getName())
+                            );
                         }
                     } else {
                         table.addColumns(IntColumn.create(output.getName(), rowCount));
@@ -82,7 +88,9 @@ public class TableUtils {
                 case LONG:
                     if (exist) {
                         if (!(table.column(output.getName()) instanceof LongColumn)) {
-                            throw new EvaluationException("Column %s already exist with a different type");
+                            throw new EvaluationException(
+                                String.format("Column %s already exist with a different type", output.getName())
+                            );
                         }
                     } else {
                         table.addColumns(LongColumn.create(output.getName(), rowCount));
@@ -91,7 +99,9 @@ public class TableUtils {
                 case DATE:
                     if (exist) {
                         if (!(table.column(output.getName()) instanceof DateColumn)) {
-                            throw new EvaluationException("Column %s already exist with a different type");
+                            throw new EvaluationException(
+                                String.format("Column %s already exist with a different type", output.getName())
+                            );
                         }
                     } else {
                         table.addColumns(DateColumn.create(output.getName(), rowCount));
@@ -100,7 +110,9 @@ public class TableUtils {
                 case BOOLEAN:
                     if (exist) {
                         if (!(table.column(output.getName()) instanceof BooleanColumn)) {
-                            throw new EvaluationException("Column %s already exist with a different type");
+                            throw new EvaluationException(
+                                String.format("Column %s already exist with a different type", output.getName())
+                            );
                         }
                     } else {
                         table.addColumns(BooleanColumn.create(output.getName(), rowCount));
@@ -109,7 +121,9 @@ public class TableUtils {
                 case STRING:
                     if (exist) {
                         if (!(table.column(output.getName()) instanceof StringColumn)) {
-                            throw new EvaluationException("Column %s already exist with a different type");
+                            throw new EvaluationException(
+                                String.format("Column %s already exist with a different type", output.getName())
+                            );
                         }
                     } else {
                         table.addColumns(StringColumn.create(output.getName(), rowCount));
