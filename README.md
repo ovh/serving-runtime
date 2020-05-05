@@ -23,35 +23,6 @@ Supported serialized models are :
 * Python `3.7`
 * TensorFlow `<=1.15` (`pip install tensorflow`)
 
-### ONNX support (Optional)
-<aside class="notice">
-<p>If you use the API from the docker image this step is not necessary as it will be built within the image.</p>
-</aside>
-  
-To enable the ONNX support the project requires the use of the Java onnxruntime which is not yet available on Maven repository. You will need to build and add it to your path.
-
-First clone the repository:
-```bash
-git clone --recursive https://github.com/microsoft/onnxruntime.git
-cd onnxruntime
-```
-
-Then build the onnxruntime for Java. To do so you will first required both [cmake](https://cmake.org/download/) and [gradle 6](https://gradle.org/install/) or higher. Once both are available in your path (beware depending on your machine this step can take some time):
-```bash
-./build.sh --config RelWithDebInfo --build_shared_lib --build_java --parallel
-```
-
-Then you need to install the generated JAR:
-```bash 
-mvn install:install-file \
--Dfile=build/Linux/RelWithDebInfo/java/build/libs/onnxruntime-1.2.0-all.jar \
--DgroupId=ai \
--DartifactId=onnxruntime \
--Dversion=1.2.0-all \
--Dpackaging=jar \
--DgeneratePom=true
-```
-
 ### HDF5 support (Optional)
 <aside class="notice">
 <p>If you use the API from the docker image this step is not necessary as it will be built within the image.</p>

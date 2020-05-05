@@ -1,0 +1,30 @@
+name: TUs & TIs
+on:
+  push:
+    branches: [ '*' ]
+jobs:
+  test-build-jar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Set up JDK 1.11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Cache maven modules
+        uses: actions/cache@v1
+        env:
+          cache-name: serving-runtime-maven-deps
+        with:
+          path: ~/.m2/repository
+          key: cache-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
+
+      - name: TUs & TIs
+        run: |
+          make initialize
+          make test

@@ -37,7 +37,7 @@ public class Tensorflow2DEvaluatorTest {
             LOADER.getResourceAsStream("tensorflow/2d_savedmodel/2d-tensorflow-model-manifest.json"),
             TensorflowEvaluatorManifest.class
         );
-        tensorFlowEvaluator = TensorflowEvaluator.create(manifest, "");
+        tensorFlowEvaluator = TensorflowEvaluator.create(manifest, "./");
     }
 
     @Test

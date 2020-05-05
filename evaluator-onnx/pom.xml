@@ -18,9 +18,14 @@
             <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>ai</groupId>
+            <groupId>org.bytedeco</groupId>
             <artifactId>onnxruntime</artifactId>
-            <version>1.2.0-all</version>
+            <version>1.2.0-1.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>onnxruntime-platform</artifactId>
+            <version>1.2.0-1.5.3</version>
         </dependency>
     </dependencies>
 </project>

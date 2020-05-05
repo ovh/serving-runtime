@@ -337,7 +337,7 @@ public class TensorTest {
         });
         assertArrayEquals((int[][][]) expected.getData(), (int[][][]) slice.getData());
 
-        tensor = new Tensor(type, new int[] {-1}, new int[] {1, 2, 3, 4, 5, 6});
+        tensor = new Tensor(type, new int[] {6}, new int[] {1, 2, 3, 4, 5, 6});
         slice = tensor.slice(new TensorShape(new int[] {2}), new TensorShape(new int[] {1}));
         expected = new Tensor(type, new int[] {1}, new int[] {3});
         assertArrayEquals((int[]) expected.getData(), (int[]) slice.getData());
