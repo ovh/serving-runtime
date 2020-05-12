@@ -6,7 +6,7 @@ import com.ovh.mls.serving.runtime.exceptions.EvaluationException;
 
 import java.util.List;
 
-public interface Evaluator {
+public interface Evaluator<F extends Field> {
     /**
      * Applies the evaluator operations over a Table and returns the initial
      * Table enriched with generated outputs.
@@ -20,13 +20,13 @@ public interface Evaluator {
      * @return The list of inputs required by the evaluator
      */
     @JsonProperty("inputs")
-    List<Field> getInputs();
+    List<F> getInputs();
 
     /**
      * @return The list of outputs added to the Table after applying the evaluator
      */
     @JsonProperty("outputs")
-    List<Field> getOutputs();
+    List<F> getOutputs();
 
     /**
      * @return The required number of rows in the Table for the evaluator

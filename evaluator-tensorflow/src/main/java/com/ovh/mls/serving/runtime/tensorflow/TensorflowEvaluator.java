@@ -29,7 +29,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 @NumberOnly
-public class TensorflowEvaluator extends AbstractTensorEvaluator {
+public class TensorflowEvaluator extends AbstractTensorEvaluator<TensorField> {
     private static final Logger LOGGER = LoggerFactory.getLogger(TensorflowEvaluator.class);
 
     /**

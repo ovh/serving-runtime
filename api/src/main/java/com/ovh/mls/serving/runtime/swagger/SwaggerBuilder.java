@@ -54,9 +54,9 @@ public class SwaggerBuilder {
     private static final String OUTPUT_TENSORS = "Outputs";
 
     private final Config config;
-    private final Evaluator evaluator;
+    private final Evaluator<?> evaluator;
 
-    public SwaggerBuilder(Config config, Evaluator evaluator) {
+    public SwaggerBuilder(Config config, Evaluator<?> evaluator) {
         this.config = config;
         this.evaluator = evaluator;
     }
@@ -96,7 +96,7 @@ public class SwaggerBuilder {
     }
 
     private void buildResponse(Components components) throws JsonProcessingException {
-        List<Field> outputs = evaluator.getOutputs();
+        List<? extends Field> outputs = evaluator.getOutputs();
         MediaType jsonMediaType = new MediaType();
 
         // We build the schema with the output fields
@@ -160,7 +160,7 @@ public class SwaggerBuilder {
 
     private void buildRequest(Components components) throws JsonProcessingException {
 
-        List<Field> inputs = evaluator.getInputs();
+        List<? extends Field> inputs = evaluator.getInputs();
         MediaType jsonMediaType = new MediaType();
         jsonMediaType.schema(new Schema().$ref(INPUT_TENSORS));
 
@@ -222,7 +222,7 @@ public class SwaggerBuilder {
             .addSchemas(OUTPUT_TENSORS, outputTensorsSchema);
     }
 
-    private static Schema<?> buildMultipartSchema(List<Field> fields) {
+    private static Schema<?> buildMultipartSchema(List<? extends Field> fields) {
         Schema multipartFormat = new Schema().type("object");
         Map<String, Schema<?>> schemas = new HashMap<>();
         for (Field field : fields) {
@@ -241,7 +241,7 @@ public class SwaggerBuilder {
     }
 
     private static String getDescription(
-            List<Field> fields,
+            List<? extends Field> fields,
             String description1,
             String description2,
             TensorIO tensorIO) {
@@ -282,7 +282,7 @@ public class SwaggerBuilder {
         return description.toString();
     }
 
-    private Schema buildSchemaFromFields(List<Field> fields) {
+    private Schema buildSchemaFromFields(List<? extends Field> fields) {
         Schema schema = new ObjectSchema();
 
         fields.forEach(
@@ -413,7 +413,7 @@ public class SwaggerBuilder {
         return new Schema();
     }
 
-    private TensorIO generateRandomTensors(List<Field> fields) {
+    private TensorIO generateRandomTensors(List<? extends Field> fields) {
         Map<String, Tensor> result = new HashMap<>();
         for (Field field: fields) {
             Tensor tensor = generateRandomTensor(field, 1);

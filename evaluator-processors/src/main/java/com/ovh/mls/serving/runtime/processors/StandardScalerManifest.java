@@ -2,6 +2,7 @@ package com.ovh.mls.serving.runtime.processors;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.ovh.mls.serving.runtime.core.AbstractEvaluatorManifest;
+import com.ovh.mls.serving.runtime.core.Field;
 import com.ovh.mls.serving.runtime.core.IncludeAsEvaluatorManifest;
 import com.ovh.mls.serving.runtime.exceptions.EvaluatorException;
 
@@ -9,7 +10,7 @@ import java.util.Map;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @IncludeAsEvaluatorManifest(type = "standard_scaler")
-public class StandardScalerManifest extends AbstractEvaluatorManifest {
+public class StandardScalerManifest extends AbstractEvaluatorManifest<Field> {
 
     private static final String type = "standard_scaler";
 

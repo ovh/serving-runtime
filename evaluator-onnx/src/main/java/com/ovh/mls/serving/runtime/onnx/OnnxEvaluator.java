@@ -32,7 +32,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 
-public class OnnxEvaluator extends AbstractTensorEvaluator {
+public class OnnxEvaluator extends AbstractTensorEvaluator<TensorField> {
     private static final OrtEnvironment ONNX_ENVIRONMENT;
 
     static {
