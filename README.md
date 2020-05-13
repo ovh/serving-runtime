@@ -1,7 +1,7 @@
 # Serving Runtime
 Exposes a serialized machine learning model through a HTTP API written in Java.
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)]() [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ai.svg)](https://gitter.im/ovh/ai) 
+![TUs & TIs](https://github.com/ovh/serving-runtime/workflows/TUs%20&%20TIs/badge.svg?branch=master) [![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)]() [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ai.svg)](https://gitter.im/ovh/ai) 
  
  **This project is under active development**
  
