@@ -3,6 +3,7 @@ package com.ovh.mls.serving.runtime.timeseries;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.ovh.mls.serving.runtime.core.AbstractEvaluatorManifest;
+import com.ovh.mls.serving.runtime.core.Field;
 import com.ovh.mls.serving.runtime.core.IncludeAsEvaluatorManifest;
 
 import java.util.Collections;
@@ -11,7 +12,7 @@ import java.util.Map;
 // In case of direct deserialization we override parent JsonTypeInfo
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @IncludeAsEvaluatorManifest(type = "pi")
-public class PredictionIntervalEvaluatorManifest extends AbstractEvaluatorManifest {
+public class PredictionIntervalEvaluatorManifest extends AbstractEvaluatorManifest<Field> {
 
     private static final String type = "pi";
 

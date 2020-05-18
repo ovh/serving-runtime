@@ -24,7 +24,7 @@ public class TensorIOIntoTensorIO implements Builder<TensorIO, TensorIO> {
     /**
      * List of tensor fields to use for transformation
      */
-    private final List<TensorField> tensorFields;
+    private final List<? extends TensorField> tensorFields;
 
     /**
      * Indicates if the output tensors should be the main tensor or the computed index for that tensor
@@ -36,16 +36,16 @@ public class TensorIOIntoTensorIO implements Builder<TensorIO, TensorIO> {
      */
     private final int rollingWindowsSize;
 
-    public TensorIOIntoTensorIO(List<TensorField> tensorFields) {
+    public TensorIOIntoTensorIO(List<? extends TensorField> tensorFields) {
         this(tensorFields, false, 1);
     }
 
-    public TensorIOIntoTensorIO(List<TensorField> tensorFields, boolean buildIndexes) {
+    public TensorIOIntoTensorIO(List<? extends TensorField> tensorFields, boolean buildIndexes) {
         this(tensorFields, buildIndexes, 1);
     }
 
     public TensorIOIntoTensorIO(
-        List<TensorField> tensorFields,
+        List<? extends TensorField> tensorFields,
         boolean buildIndexes,
         int rollingWindowsSize) {
 

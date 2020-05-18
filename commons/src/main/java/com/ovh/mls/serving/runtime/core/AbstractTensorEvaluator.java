@@ -12,18 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class AbstractTensorEvaluator implements Evaluator {
+public abstract class AbstractTensorEvaluator<F extends TensorField> implements Evaluator<F> {
 
     private final int rollingWindowsSize;
 
-    private final List<TensorField> inputTensorFields;
-    private final List<TensorField> outputTensorFields;
+    private final List<F> inputTensorFields;
+    private final List<F> outputTensorFields;
     private final Builder<TensorIO, TensorIO> inputTensorBuilder;
     private final Builder<TensorIO, TensorIO> outputTensorBuilder;
 
     public AbstractTensorEvaluator(
-        List<TensorField> inputTensorFields,
-        List<TensorField> outputTensorFields,
+        List<F> inputTensorFields,
+        List<F> outputTensorFields,
         int rollingWindowsSize
     ) {
         this.rollingWindowsSize = rollingWindowsSize;
@@ -65,13 +65,13 @@ public abstract class AbstractTensorEvaluator implements Evaluator {
     protected abstract TensorIO evaluateTensor(TensorIO tensorIO) throws EvaluationException;
 
     @Override
-    public List<Field> getInputs() {
-        return new ArrayList<>(this.inputTensorFields);
+    public List<F> getInputs() {
+        return new ArrayList<F>(this.inputTensorFields);
     }
 
     @Override
-    public List<Field> getOutputs() {
-        return new ArrayList<>(this.outputTensorFields);
+    public List<F> getOutputs() {
+        return new ArrayList<F>(this.outputTensorFields);
     }
 
     @Override
@@ -80,12 +80,12 @@ public abstract class AbstractTensorEvaluator implements Evaluator {
     }
 
     @Transient
-    public List<TensorField> getInputTensorField() {
+    public List<? extends TensorField> getInputTensorField() {
         return this.inputTensorFields;
     }
 
     @Transient
-    public List<TensorField> getOutputTensorField() {
+    public List<? extends TensorField> getOutputTensorField() {
         return this.outputTensorFields;
     }
 

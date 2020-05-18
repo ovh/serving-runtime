@@ -7,6 +7,7 @@ import com.ovh.mls.serving.runtime.core.Field;
 import com.ovh.mls.serving.runtime.core.builder.InputStreamJsonIntoTensorIO;
 import com.ovh.mls.serving.runtime.core.io.TensorIO;
 import com.ovh.mls.serving.runtime.core.tensor.Tensor;
+import com.ovh.mls.serving.runtime.core.tensor.TensorField;
 import com.ovh.mls.serving.runtime.core.tensor.TensorShape;
 import com.ovh.mls.serving.runtime.exceptions.EvaluationException;
 import com.ovh.mls.serving.runtime.exceptions.EvaluatorException;
@@ -57,7 +58,7 @@ public class H5Test {
 
     @Test
     public void getInputs() {
-        List<Field> inputs = tensorFlowEvaluator.getInputs();
+        List<TensorField> inputs = tensorFlowEvaluator.getInputs();
         assertEquals(1, inputs.size());
         assertEquals("inputs", inputs.get(0).getName());
         assertEquals(DataType.FLOAT, inputs.get(0).getType());
@@ -65,7 +66,7 @@ public class H5Test {
 
     @Test
     public void getOutputs() {
-        List<Field> outputs = tensorFlowEvaluator.getOutputs();
+        List<TensorField> outputs = tensorFlowEvaluator.getOutputs();
 
         assertEquals(1, outputs.size());
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.IntStream;
 
 public class Tensor {
@@ -748,5 +749,15 @@ public class Tensor {
         } else {
             return this.getData();
         }
+    }
+
+    public <T> Tensor apply(Function<Object, T> func, DataType outputDataType) {
+        Tensor outputTensor = new Tensor(outputDataType, this.shape);
+        this.coordIterator().forEachRemaining(coords -> {
+            Object input = this.getCoord(coords);
+            T output = func.apply(input);
+            outputTensor.setOnCoord(output, coords);
+        });
+        return outputTensor;
     }
 }
