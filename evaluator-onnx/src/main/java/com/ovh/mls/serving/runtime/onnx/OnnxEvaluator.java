@@ -16,9 +16,12 @@ import com.ovh.mls.serving.runtime.core.tensor.TensorField;
 import com.ovh.mls.serving.runtime.core.tensor.TensorShape;
 import com.ovh.mls.serving.runtime.exceptions.EvaluationException;
 import com.ovh.mls.serving.runtime.exceptions.EvaluatorException;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Base64InputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -90,10 +93,16 @@ public class OnnxEvaluator extends AbstractTensorEvaluator<TensorField> {
 
     // Create a evaluator from a manifest
     static OnnxEvaluator create(OnnxEvaluatorManifest manifest, String path) throws IOException, EvaluatorException {
-        var inputStream = FileUtils.openInputStream(new File(path, manifest.getOnnxModelUri()));
-
         try {
-            byte[] bytes = IOUtils.toByteArray(inputStream);
+            byte[] bytes;
+            if (manifest.getBinary() != null) {
+                // If binary is present in manifest
+                bytes = Base64.decodeBase64(manifest.getBinary());
+            } else {
+                InputStream inputStream = FileUtils.openInputStream(new File(path, manifest.getOnnxModelUri()));
+                bytes = IOUtils.toByteArray(inputStream);
+            }
+
             OrtSession model = ONNX_ENVIRONMENT.createSession(bytes);
 
             return new OnnxEvaluator(model, manifest.getInputs(), manifest.getOutputs(), manifest.getBatchSize());
