@@ -66,7 +66,7 @@ public class FlowEvaluatorTest {
 
     @Test
     public void getInputs() {
-        List<Field> inputs = flowEvaluator.getInputs();
+        List<? extends Field> inputs = flowEvaluator.getInputs();
 
         Assertions.assertEquals(3, inputs.size());
         Assertions.assertEquals(
@@ -81,7 +81,7 @@ public class FlowEvaluatorTest {
 
     @Test
     public void getOutputs() {
-        List<Field> outputs = flowEvaluator.getOutputs();
+        List<? extends Field> outputs = flowEvaluator.getOutputs();
 
         Assertions.assertEquals(2, outputs.size());
         Assertions.assertEquals(
@@ -98,7 +98,7 @@ public class FlowEvaluatorTest {
         flowEvaluatorManifest.setOutputs(Collections.emptyList());
         FlowEvaluator flowEvaluator2 = flowEvaluatorManifest.create("");
 
-        List<Field> outputs = flowEvaluator2.getOutputs();
+        List<? extends Field> outputs = flowEvaluator2.getOutputs();
 
         Assertions.assertEquals(2, outputs.size());
         Assertions.assertEquals(

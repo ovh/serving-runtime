@@ -22,6 +22,9 @@ public class OnnxEvaluatorManifest implements EvaluatorManifest {
     @JsonProperty("onnx_model_uri")
     private String onnxModelUri;
 
+    @JsonProperty("binary")
+    private String binary;
+
     private Integer batchSize = 1;
 
     private List<TensorField> inputs;
@@ -67,5 +70,13 @@ public class OnnxEvaluatorManifest implements EvaluatorManifest {
 
     public void setOutputs(List<TensorField> outputs) {
         this.outputs = outputs;
+    }
+
+    public String getBinary() {
+        return binary;
+    }
+
+    public void setBinary(String binary) {
+        this.binary = binary;
     }
 }
