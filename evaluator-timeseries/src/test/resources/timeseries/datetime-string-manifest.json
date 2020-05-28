@@ -3,7 +3,7 @@
     {
       "name": "date",
       "type": "string",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "yyyy-MM-dd HH:mm:ss"
     }
   ],
@@ -11,61 +11,61 @@
     {
       "name": "year",
       "type": "integer",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "YEAR"
     },
     {
       "name": "month",
       "type": "integer",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "MONTH"
     },
     {
       "name": "dayofmonth",
       "type": "integer",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "DAYOFMONTH"
     },
     {
       "name": "hourofday",
       "type": "integer",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "HOUROFDAY"
     },
     {
       "name": "minuteofhour",
       "type": "integer",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "MINUTEOFHOUR"
     },
     {
       "name": "dayofweek",
       "type": "integer",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "DAYOFWEEK"
     },
     {
       "name": "year-string",
       "type": "string",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "yyyy"
     },
     {
       "name": "year-float",
       "type": "float",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "YEAR"
     },
     {
       "name": "timestamp-seconds",
       "type": "long",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "TS_S"
     },
     {
       "name": "timestamp-years",
       "type": "long",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "TS_Y"
     }
   ]
