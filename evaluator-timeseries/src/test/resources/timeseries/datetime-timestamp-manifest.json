@@ -3,7 +3,7 @@
     {
       "name": "timestamp-seconds",
       "type": "long",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "TS_S"
     }
   ],
@@ -11,7 +11,7 @@
     {
       "name": "date",
       "type": "string",
-      "shape": "(-1, -1)",
+      "shape": [-1, -1],
       "format": "yyyy-MM-dd HH:mm:ss"
     }
   ]

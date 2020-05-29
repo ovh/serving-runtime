@@ -12,40 +12,10 @@ public class TensorShape {
         this.shape = shape;
     }
 
-    public TensorShape(String shape) {
-        this.shape = getShapeFromString(shape);
-    }
-
     public TensorShape(long[] shape) {
         this.shape = Arrays.stream(shape)
             .mapToInt(x -> (int) x)
             .toArray();
-    }
-
-    /**
-     * Extract a shape from a string like (?, 2, 2)
-     */
-    private static int[] getShapeFromString(String stringShape) {
-        String removeParenthesis = stringShape.substring(1, stringShape.length() - 1);
-        String[] split = removeParenthesis.split(",");
-
-        if (removeParenthesis.isEmpty()) {
-            return new int[0];
-        }
-
-        Integer[] result = Arrays
-            .stream(split)
-            .map(String::trim)
-            .map(x -> {
-                if ("?".equals(x)) {
-                    return -1;
-                } else {
-                    return Integer.parseInt(x);
-                }
-            })
-            .toArray(Integer[]::new);
-
-        return ArrayUtils.toPrimitive(result);
     }
 
     public boolean handleBatch() {
