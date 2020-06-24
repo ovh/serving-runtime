@@ -14,3 +14,6 @@ evaluator-tensorflow/h5_converter/dist/*
 evaluator-tensorflow/h5_converter/build/*
 evaluator-tensorflow/tmp/*
 evaluator-tensorflow/h5_converter/h5_converter.spec
+
+# Rust
+Cargo.lock

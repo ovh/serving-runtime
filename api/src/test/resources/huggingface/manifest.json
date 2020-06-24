@@ -1,0 +1,4 @@
+{
+  "type": "huggingface_tokenizer",
+  "saved_model_uri": "bpe.json",
+}

@@ -12,6 +12,7 @@ The purpose of this project is to expose a generic HTTP API from a machine learn
 Supported serialized models are :
 * [ONNX][ONNX] `1.5`
 * TensorFlow `<=1.15` SavedModel or HDF5
+* [HuggingFace Tokenizer](https://github.com/huggingface/tokenizers)
  
 ## Prerequisites
 
@@ -23,6 +24,9 @@ Supported serialized models are :
 * Python `3.7`
 * TensorFlow `<=1.15` (`pip install tensorflow`)
 
+For HuggingFace tokenizer :
+* Cargo (Rust stable)
+
 ### HDF5 support (Optional)
 <aside class="notice">
 <p>If you use the API from the docker image this step is not necessary as it will be built within the image.</p>
@@ -30,11 +34,18 @@ Supported serialized models are :
 
 The Tensorflow module requires the support of HDF5 files through the creation of an executable `h5_converter` wich exports the model from HDF5 file to a Tensorflow SavedModel (`.pb`).  
 
-To generate the converter simply use the initialize goal of the `Makefile`:
+To generate the converter simply use the initialize_tensorflow goal of the `Makefile`:
 ```bash
-make initialize
+make initialize_tensorflow
 ```
 The generated executable can be found here: `evaluator-tensorflow/h5_converter/dist/h5_converter`
+
+### HuggingFace (Optional)
+
+To build the Java binding use the initialize_huggingface goal of the `Makefile`:
+```bash
+make initialize_huggingface
+```
 
 ## Build & Launch the project locally
 Several profiles are available depending on the support you require for the built project.

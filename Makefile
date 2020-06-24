@@ -42,6 +42,10 @@ test:
 deploy:
 	mvn -B deploy -DskipTests -P$(MAVEN_PROFILE)
 
-.PHONY: initialize
-initialize:
+.PHONY: initialize-tensorflow
+initialize-tensorflow:
 	make -C evaluator-tensorflow/h5_converter build
+
+.PHONY: initialize-huggingface
+initialize-huggingface:
+	make -C evaluator-huggingface/huggingface-tokenizer-jni

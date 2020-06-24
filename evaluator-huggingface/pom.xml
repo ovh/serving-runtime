@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>serving-runtime</artifactId>
+        <groupId>com.ovh.mls.serving.runtime</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>evaluator-huggingface</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ovh.mls.serving.runtime</groupId>
+            <artifactId>commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>huggingface-tokenizer-jni/target/release</directory>
+                <includes>
+                    <include>*huggingface_tokenizer_jni.dylib</include>
+                    <include>*huggingface_tokenizer_jni.so</include>
+                    <include>*huggingface_tokenizer_jni.dll</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>
