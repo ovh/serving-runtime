@@ -21,6 +21,10 @@ public class HuggingFaceTokenizerEvaluator implements Evaluator<Field> {
 
     private final Tokenizer tokenizer;
 
+    public HuggingFaceTokenizerEvaluator(Tokenizer tokenizer) {
+        this.tokenizer = tokenizer;
+    }
+
     @Override
     public TensorIO evaluate(TensorIO io, EvaluationContext evaluationContext) throws EvaluationException {
         String input = (String) io.getTensors().get("sequence").getCoord(0);
@@ -54,10 +58,6 @@ public class HuggingFaceTokenizerEvaluator implements Evaluator<Field> {
         ));
 
         return output;
-    }
-
-    public HuggingFaceTokenizerEvaluator(Tokenizer tokenizer) {
-        this.tokenizer = tokenizer;
     }
 
     @Override
