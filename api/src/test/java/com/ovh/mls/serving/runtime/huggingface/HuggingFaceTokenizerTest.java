@@ -43,8 +43,16 @@ public class HuggingFaceTokenizerTest {
             .body(
                 "inputs.get(0).name", equalTo("sequence"),
                 "inputs.get(0).type", equalTo("string"),
-                "outputs.get(0).name", equalTo("ids"),
-                "outputs.get(0).type", equalTo("integer")
+                "outputs.get(0).name", equalTo("tokens"),
+                "outputs.get(0).type", equalTo("string"),
+                "outputs.get(1).name", equalTo("ids"),
+                "outputs.get(1).type", equalTo("integer"),
+                "outputs.get(2).name", equalTo("typeIds"),
+                "outputs.get(2).type", equalTo("integer"),
+                "outputs.get(3).name", equalTo("specialTokensMask"),
+                "outputs.get(3).type", equalTo("integer"),
+                "outputs.get(4).name", equalTo("attentionMask"),
+                "outputs.get(4).type", equalTo("integer")
             );
     }
 
@@ -61,7 +69,7 @@ public class HuggingFaceTokenizerTest {
             .statusCode(200)
             .body(
                 "ids",
-                IsEqual.equalTo(List.of(1212, 271, 265, 395))
+                IsEqual.equalTo(List.of(83, 44, 58, 96, 83, 96, 93, 92, 55, 69, 70))
             );
     }
 }
