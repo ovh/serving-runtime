@@ -41,8 +41,10 @@ public class HuggingFaceTokenizerTest {
             .then()
             .statusCode(200)
             .body(
-                "inputs.get(0).name", equalTo("sequence"),
+                "inputs.get(0).name", equalTo("input1"),
                 "inputs.get(0).type", equalTo("string"),
+                "inputs.get(1).name", equalTo("input2"),
+                "inputs.get(1).type", equalTo("string"),
                 "outputs.get(0).name", equalTo("tokens"),
                 "outputs.get(0).type", equalTo("string"),
                 "outputs.get(1).name", equalTo("ids"),
@@ -57,9 +59,9 @@ public class HuggingFaceTokenizerTest {
     }
 
     @Test
-    public void testEval() {
+    public void testEvalString() {
         Map<String, Object> body = new HashMap<>();
-        body.put("sequence", List.of("This is a test"));
+        body.put("input1", List.of("This is a test"));
         given()
             .body(body)
             .header(new Header("Content-Type", "application/json"))
@@ -70,6 +72,27 @@ public class HuggingFaceTokenizerTest {
             .body(
                 "ids",
                 IsEqual.equalTo(List.of(83, 44, 58, 96, 83, 96, 93, 92, 55, 69, 70))
+            );
+    }
+
+    @Test
+    public void testEvalDualTokens() {
+        Map<String, Object> body = new HashMap<>();
+        body.put("input1", List.of("This is a test".split(" ")));
+        body.put("input2", "And another sentence".split(" "));
+        given()
+            .body(body)
+            .header(new Header("Content-Type", "application/json"))
+            .when()
+            .post("/eval")
+            .then()
+            .statusCode(200)
+            .body(
+                "ids",
+                IsEqual.equalTo(List.of(
+                    83, 44, 58, 96, 83, 96, 93, 92, 55, 69, 70, 83, 25, 64, 54, 93, 64, 65, 70, 91, 68, 83, 69, 55, 64,
+                    70, 55, 64, 53, 55
+                ))
             );
     }
 }
