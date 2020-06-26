@@ -22,6 +22,7 @@
             <modules>
                 <module>evaluator-tensorflow</module>
                 <module>evaluator-onnx</module>
+                <module>evaluator-huggingface</module>
             </modules>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -37,6 +38,12 @@
             <id>tensorflow</id>
             <modules>
                 <module>evaluator-tensorflow</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>huggingface</id>
+            <modules>
+                <module>evaluator-huggingface</module>
             </modules>
         </profile>
     </profiles>

@@ -36,6 +36,11 @@
                     <artifactId>evaluator-onnx</artifactId>
                     <version>${serving.version}</version>
                 </dependency>
+                <dependency>
+                    <groupId>com.ovh.mls.serving.runtime</groupId>
+                    <artifactId>evaluator-huggingface</artifactId>
+                    <version>${serving.version}</version>
+                </dependency>
             </dependencies>
             <properties>
                 <test.regex>none</test.regex>
@@ -68,6 +73,19 @@
             </dependencies>
             <properties>
                 <test.regex>**/onnx/*</test.regex>
+            </properties>
+        </profile>
+        <profile>
+            <id>huggingface</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.ovh.mls.serving.runtime</groupId>
+                    <artifactId>evaluator-huggingface</artifactId>
+                    <version>${serving.version}</version>
+                </dependency>
+            </dependencies>
+            <properties>
+                <test.regex>**/huggingface/*</test.regex>
             </properties>
         </profile>
     </profiles>
