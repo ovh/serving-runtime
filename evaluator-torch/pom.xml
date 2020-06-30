@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>serving-runtime</artifactId>
+        <groupId>com.ovh.mls.serving.runtime</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>evaluator-torch</artifactId>
+
+    <properties>
+        <pytorch.version>1.5.0-SNAPSHOT</pytorch.version>
+        <fbjni.version>0.0.3</fbjni.version>
+        <nativeloader.version>0.8.0</nativeloader.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>oss.sonatype.org</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+        <repository>
+            <id>jcenter.bintray.com</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ovh.mls.serving.runtime</groupId>
+            <artifactId>commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pytorch</groupId>
+            <artifactId>pytorch_java_only</artifactId>
+            <version>${pytorch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.facebook.fbjni</groupId>
+            <artifactId>fbjni-java-only</artifactId>
+            <version>${fbjni.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.facebook.soloader</groupId>
+            <artifactId>nativeloader</artifactId>
+            <version>${nativeloader.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>libtorch-linux-cpu/lib</directory>
+                <includes>
+                    <include>*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>libtorch-mac-cpu/lib</directory>
+                <includes>
+                    <include>*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>libtorch-windows-cpu/lib</directory>
+                <includes>
+                    <include>*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>

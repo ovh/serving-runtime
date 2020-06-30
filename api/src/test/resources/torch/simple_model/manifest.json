@@ -1,0 +1,22 @@
+{
+  "type": "torch_script",
+  "saved_model_uri": "model.ts",
+  "inputs": [
+    {
+      "name": "input_0",
+      "shape": [
+        2
+      ],
+      "type": "float"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output_0",
+      "shape": [
+        2
+      ],
+      "type": "float"
+    }
+  ]
+}
