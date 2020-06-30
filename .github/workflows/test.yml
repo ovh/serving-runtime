@@ -26,5 +26,5 @@ jobs:
 
       - name: TUs & TIs
         run: |
-          make initialize-tensorflow initialize-huggingface
+          make initialize-tensorflow initialize-huggingface initialize-torch
           make test
