@@ -56,19 +56,19 @@
             <resource>
                 <directory>libtorch-linux-cpu/lib</directory>
                 <includes>
-                    <include>*</include>
+                    <include>*.so</include>
                 </includes>
             </resource>
             <resource>
                 <directory>libtorch-mac-cpu/lib</directory>
                 <includes>
-                    <include>*</include>
+                    <include>*.dylib</include>
                 </includes>
             </resource>
             <resource>
                 <directory>libtorch-windows-cpu/lib</directory>
                 <includes>
-                    <include>*</include>
+                    <include>*.dll</include>
                 </includes>
             </resource>
         </resources>

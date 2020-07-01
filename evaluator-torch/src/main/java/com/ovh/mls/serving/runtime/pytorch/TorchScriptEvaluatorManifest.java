@@ -1,20 +1,49 @@
 package com.ovh.mls.serving.runtime.pytorch;
 
 import com.facebook.jni.CppException;
+import com.facebook.soloader.nativeloader.NativeLoader;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ovh.mls.serving.runtime.core.EvaluatorManifest;
 import com.ovh.mls.serving.runtime.core.IncludeAsEvaluatorManifest;
 import com.ovh.mls.serving.runtime.core.tensor.TensorField;
 import com.ovh.mls.serving.runtime.exceptions.EvaluatorException;
+import com.ovh.mls.serving.runtime.utils.NativeUtils;
 import org.pytorch.Module;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 
 @IncludeAsEvaluatorManifest(type = TorchScriptEvaluatorManifest.TYPE)
 public class TorchScriptEvaluatorManifest implements EvaluatorManifest {
+
+    // Load pytorch_jni from JAR
+    static {
+        NativeLoader.init(libname -> {
+            try {
+                // Load library from filesystem (java.library.path)
+                System.loadLibrary(libname);
+                return true;
+            } catch (UnsatisfiedLinkError e) {
+                try {
+                    // Load library from JAR
+                    NativeUtils.loadLibraryFromJar("/" + System.mapLibraryName(libname));
+                } catch (UnsatisfiedLinkError | IOException ignored) {
+                    throw new EvaluatorException("Cannot load library " + libname, e);
+                }
+            }
+
+            return true;
+        });
+        NativeLoader.loadLibrary("fbjni");
+        NativeLoader.loadLibrary("c10");
+        NativeLoader.loadLibrary("iomp5");
+        NativeLoader.loadLibrary("torch_cpu");
+        NativeLoader.loadLibrary("torch");
+        NativeLoader.loadLibrary("pytorch_jni");
+    }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TorchScriptEvaluatorManifest.class);
 

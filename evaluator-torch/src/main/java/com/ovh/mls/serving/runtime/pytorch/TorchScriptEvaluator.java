@@ -1,7 +1,5 @@
 package com.ovh.mls.serving.runtime.pytorch;
 
-import com.facebook.soloader.nativeloader.NativeLoader;
-import com.facebook.soloader.nativeloader.NativeLoaderDelegate;
 import com.ovh.mls.serving.runtime.core.AbstractTensorEvaluator;
 import com.ovh.mls.serving.runtime.core.DataType;
 import com.ovh.mls.serving.runtime.core.io.TensorIO;
