@@ -20,6 +20,12 @@
         <log4j2.version>2.7</log4j2.version>
         <metrics.version>0.5.0</metrics.version>
         <swagger-jaxrs2.version>2.0.9</swagger-jaxrs2.version>
+
+        <!-- Include integration tests only when corresponding profile in activated -->
+        <it.exclude.onnx>**/onnx/*</it.exclude.onnx>
+        <it.exclude.tensorflow>**/tensorflow/*</it.exclude.tensorflow>
+        <it.exclude.huggingface>**/huggingface/*</it.exclude.huggingface>
+        <it.exclude.torch>**/torch/*</it.exclude.torch>
     </properties>
 
     <profiles>
@@ -48,7 +54,10 @@
                 </dependency>
             </dependencies>
             <properties>
-                <test.regex>none</test.regex>
+                <it.exclude.onnx>none</it.exclude.onnx>
+                <it.exclude.tensorflow>none</it.exclude.tensorflow>
+                <it.exclude.huggingface>none</it.exclude.huggingface>
+                <it.exclude.torch>none</it.exclude.torch>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -64,7 +73,7 @@
                 </dependency>
             </dependencies>
             <properties>
-                <test.regex>**/tensorflow/*</test.regex>
+                <it.exclude.onnx>none</it.exclude.onnx>
             </properties>
         </profile>
         <profile>
@@ -77,7 +86,7 @@
                 </dependency>
             </dependencies>
             <properties>
-                <test.regex>**/onnx/*</test.regex>
+                <it.exclude.tensorflow>none</it.exclude.tensorflow>
             </properties>
         </profile>
         <profile>
@@ -90,7 +99,7 @@
                 </dependency>
             </dependencies>
             <properties>
-                <test.regex>**/huggingface/*</test.regex>
+                <it.exclude.huggingface>none</it.exclude.huggingface>
             </properties>
         </profile>
         <profile>
@@ -103,7 +112,7 @@
                 </dependency>
             </dependencies>
             <properties>
-                <test.regex>**/torch/*</test.regex>
+                <it.exclude.torch>none</it.exclude.torch>
             </properties>
         </profile>
     </profiles>
@@ -298,7 +307,10 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>${test.regex}</exclude>
+                        <exclude>${it.exclude.onnx}</exclude>
+                        <exclude>${it.exclude.tensorflow}</exclude>
+                        <exclude>${it.exclude.huggingface}</exclude>
+                        <exclude>${it.exclude.torch}</exclude>
                     </excludes>
                 </configuration>
             </plugin>

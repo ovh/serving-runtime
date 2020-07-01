@@ -18,7 +18,7 @@ import java.util.Map;
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TorchMultipleInputOutputTest {
+public class TorchSimpleIT {
 
     @BeforeAll
     public static void startServer() throws NoSuchFieldException, IllegalAccessException {
@@ -27,7 +27,7 @@ public class TorchMultipleInputOutputTest {
         field.setAccessible(true);
         field.set(null, null);
 
-        Config config = ConfigFactory.load("torch/multiple_input_output_model/api.conf");
+        Config config = ConfigFactory.load("torch/simple_model/api.conf");
         ApiServer apiServer = new ApiServer(config);
         apiServer.start();
         RestAssured.port = 8093;
@@ -42,25 +42,18 @@ public class TorchMultipleInputOutputTest {
             .statusCode(200)
             .body(
                 "inputs.get(0).name", equalTo("input_0"),
-                "inputs.get(0).shape", equalTo(List.of(4)),
+                "inputs.get(0).shape", equalTo(List.of(2)),
                 "inputs.get(0).type", equalTo("float"),
-                "inputs.get(1).name", equalTo("input_1"),
-                "inputs.get(1).shape", equalTo(List.of(2)),
-                "inputs.get(1).type", equalTo("float"),
                 "outputs.get(0).name", equalTo("output_0"),
-                "outputs.get(0).shape", equalTo(List.of(1)),
-                "outputs.get(0).type", equalTo("float"),
-                "outputs.get(1).name", equalTo("output_1"),
-                "outputs.get(1).shape", equalTo(List.of(1)),
-                "outputs.get(1).type", equalTo("float")
+                "outputs.get(0).shape", equalTo(List.of(2)),
+                "outputs.get(0).type", equalTo("float")
             );
     }
 
     @Test
     public void testEvalString() {
         Map<String, Object> body = new HashMap<>();
-        body.put("input_0", List.of(2.0, 5.0, 0.2, -0.2));
-        body.put("input_1", List.of(0.5, 1.0));
+        body.put("input_0", List.of(0.5, 0.2));
         given()
             .body(body)
             .header(new Header("Content-Type", "application/json"))
@@ -69,8 +62,8 @@ public class TorchMultipleInputOutputTest {
             .then()
             .statusCode(200)
             .body(
-                "output_0", IsCloseTo.closeTo(0.67084324f, 1e-6f),
-                "output_1", IsCloseTo.closeTo(-0.4381053f, 1e-6f)
+                "output_0.get(0)", IsCloseTo.closeTo(0.120716706f, 1e-6f),
+                "output_0.get(1)", IsCloseTo.closeTo(0.054772355f, 1e-6f)
             );
     }
 }
