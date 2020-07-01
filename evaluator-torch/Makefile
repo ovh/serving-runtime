@@ -1,10 +1,22 @@
-.DEFAULT_GOAL := usage
+.DEFAULT_GOAL := initialize
 
 WORKDIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
-.PHONY: initialize-usage
-usage:
-	echo 'Choose a goal between initialize-mac, initialize-linux and initialize-windows'
+OS :=
+ifeq ($(OS),Windows_NT)
+	OS = windows
+else
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		OS = linux
+	endif
+	ifeq ($(UNAME_S),Darwin)
+		OS = mac
+	endif
+endif
+
+.PHONY: initialize
+initialize: initialize-${OS}
 
 .PHONY: initialize-mac
 initialize-mac:

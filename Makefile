@@ -50,14 +50,6 @@ initialize-tensorflow:
 initialize-huggingface:
 	make -C evaluator-huggingface/huggingface-tokenizer-jni
 
-.PHONY: initialize-torch-mac
-initialize-torch-mac:
-	make -C evaluator-torch-mac
-
-.PHONY: initialize-torch-linux
-initialize-torch-linux:
-	make -C evaluator-torch-linux
-
-.PHONY: initialize-torch-windows
-initialize-torch-windows:
-	make -C evaluator-torch-windows
+.PHONY: initialize-torch
+initialize-torch:
+	make -C evaluator-torch
