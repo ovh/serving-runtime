@@ -1,2 +1,2 @@
-torch
-tqdm
+torch>=1.5,<=1.6
+tqdm>=4,<=5
