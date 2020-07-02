@@ -5,11 +5,11 @@ public class EvaluatorException extends RuntimeException {
         super(message);
     }
 
-    public EvaluatorException(Exception e) {
-        super(e);
+    public EvaluatorException(Throwable throwable) {
+        super(throwable);
     }
 
-    public EvaluatorException(String message, Exception e) {
-        super(e);
+    public EvaluatorException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 }

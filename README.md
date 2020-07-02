@@ -47,11 +47,21 @@ To build the Java binding use the initialize_huggingface goal of the `Makefile`:
 make initialize_huggingface
 ```
 
+### Torch (Optional)
+
+To install libtorch use initialize_torch goal of the `Makefile`:
+```bash
+make initialize_torch
+```
+
+[Convert pyTorch model and more](evaluator-torch/README.md)
+
 ## Build & Launch the project locally
 Several profiles are available depending on the support you require for the built project.
-- `full` which includes both Tensorflow and ONNX, requires the [ONNX support](#onnx-support-optional) and [HDF5 support](#hdf5-support-optional)
+- `full` which includes both Tensorflow and ONNX, requires the [ONNX support](#onnx-support-optional), [HDF5 support](#hdf5-support-optional) and [Torch support](#torch-optional).
 - `tensorflow` which only includes Tensorflow, requires the [HDF5 support](#hdf5-support-optional)
 - `onnx` which only includes ONNX, requires the [ONNX support](#onnx-support-optional). 
+- `torch` which only includes Torch, requires the [Torch support](#torch-optional). 
 
 Set your desired profile:
 ```bash

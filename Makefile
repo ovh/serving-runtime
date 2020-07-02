@@ -49,3 +49,7 @@ initialize-tensorflow:
 .PHONY: initialize-huggingface
 initialize-huggingface:
 	make -C evaluator-huggingface/huggingface-tokenizer-jni
+
+.PHONY: initialize-torch
+initialize-torch:
+	make -C evaluator-torch

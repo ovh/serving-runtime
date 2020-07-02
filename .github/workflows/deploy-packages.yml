@@ -29,7 +29,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "<settings><servers><server><id>github</id><username>ovh</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
-        make initialize-tensorflow initialize-huggingface deploy
+        make initialize-tensorflow initialize-huggingface initialize-torch deploy
 
   build-docker-tensorflow:
     needs: test-build-deploy-jar
