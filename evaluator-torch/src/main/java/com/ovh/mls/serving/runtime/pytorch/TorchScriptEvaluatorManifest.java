@@ -37,9 +37,16 @@ public class TorchScriptEvaluatorManifest implements EvaluatorManifest {
 
             return true;
         });
+        // Load OpenMP (platform dependant)
+        try {
+            // Linux
+            NativeUtils.loadLibraryFromJar("/libgomp-7c85b1e2.so.1");
+            // Mac
+            NativeLoader.loadLibrary("iomp5");
+        } catch (Exception ignored) {
+        }
         NativeLoader.loadLibrary("fbjni");
         NativeLoader.loadLibrary("c10");
-        NativeLoader.loadLibrary("iomp5");
         NativeLoader.loadLibrary("torch_cpu");
         NativeLoader.loadLibrary("torch");
         NativeLoader.loadLibrary("pytorch_jni");
