@@ -38,10 +38,13 @@ public class TorchScriptEvaluatorManifest implements EvaluatorManifest {
             return true;
         });
         // Load OpenMP (platform dependant)
+        // Linux
         try {
-            // Linux
             NativeUtils.loadLibraryFromJar("/libgomp-7c85b1e2.so.1");
-            // Mac
+        } catch (Exception ignored) {
+        }
+        // Mac
+        try {
             NativeLoader.loadLibrary("iomp5");
         } catch (Exception ignored) {
         }

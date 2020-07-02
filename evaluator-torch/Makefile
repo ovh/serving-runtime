@@ -32,7 +32,7 @@ initialize-linux:
 	unzip -q libtorch-linux-cpu.zip && \
 	rm -rf libtorch-linux-cpu && mv -vf libtorch libtorch-linux-cpu && rm -v libtorch-linux-cpu.zip
 	# Fix OpenMP
-	patchelf --set-soname libgomp-7c85b1e2.so.1 libgomp-7c85b1e2.so.1
+	patchelf --set-soname libgomp-7c85b1e2.so.1 libtorch-linux-cpu/lib/libgomp-7c85b1e2.so.1
 
 .PHONY: initialize-windows
 initialize-windows:
