@@ -1,0 +1,5 @@
+{
+  "type": "huggingface_tokenizer",
+  "saved_model_uri": "tokenizer.json",
+  "add_special_tokens": false
+}

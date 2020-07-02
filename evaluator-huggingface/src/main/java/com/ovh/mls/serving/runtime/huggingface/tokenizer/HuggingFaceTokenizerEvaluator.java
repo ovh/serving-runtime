@@ -25,9 +25,11 @@ public class HuggingFaceTokenizerEvaluator implements Evaluator<Field> {
     private static final String OUTPUT_ATTENTION_MASK = "attentionMask";
 
     private final Tokenizer tokenizer;
+    private final boolean addSpecialTokens;
 
-    public HuggingFaceTokenizerEvaluator(Tokenizer tokenizer) {
+    public HuggingFaceTokenizerEvaluator(Tokenizer tokenizer, boolean addSpecialTokens) {
         this.tokenizer = tokenizer;
+        this.addSpecialTokens = addSpecialTokens;
     }
 
     @Override
@@ -40,21 +42,21 @@ public class HuggingFaceTokenizerEvaluator implements Evaluator<Field> {
             String inputSequence1 = (String) input1.getCoord(0);
             if (input2 == null) {
                 // Encode one text input
-                encoding = tokenizer.encode(inputSequence1);
+                encoding = tokenizer.encode(inputSequence1, addSpecialTokens);
             } else {
                 String inputSequence2 = (String) input2.getCoord(0);
                 // Encode two text input
-                encoding = tokenizer.encode(inputSequence1, inputSequence2);
+                encoding = tokenizer.encode(inputSequence1, inputSequence2, addSpecialTokens);
             }
         } else {
             String[] inputSequence1 = (String[]) input1.getData();
             if (input2 == null) {
                 // Encode one tokenized input
-                encoding = tokenizer.encode(inputSequence1);
+                encoding = tokenizer.encode(inputSequence1, addSpecialTokens);
             } else {
                 String[] inputSequence2 = (String[]) input2.getData();
                 // Encode two tokenized input
-                encoding = tokenizer.encode(inputSequence1, inputSequence2);
+                encoding = tokenizer.encode(inputSequence1, inputSequence2, addSpecialTokens);
             }
         }
 

@@ -6,7 +6,10 @@ import com.ovh.mls.serving.runtime.core.AbstractEvaluatorManifest;
 import com.ovh.mls.serving.runtime.core.IncludeAsEvaluatorManifest;
 import com.ovh.mls.serving.runtime.core.tensor.TensorField;
 import com.ovh.mls.serving.runtime.exceptions.EvaluatorException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 // In case of direct deserialization we override parent JsonTypeInfo
@@ -16,13 +19,32 @@ public class HuggingFaceTokenizerEvaluatorManifest extends AbstractEvaluatorMani
 
     public static final String TYPE = "huggingface_tokenizer";
 
-    @JsonProperty("saved_model_uri")
+    private static final Logger LOGGER = LoggerFactory.getLogger(HuggingFaceTokenizerEvaluatorManifest.class);
+
+    @JsonProperty
     private String savedModelUri;
+
+    @JsonProperty
+    private boolean addSpecialTokens;
 
     @Override
     public HuggingFaceTokenizerEvaluator create(String path) throws EvaluatorException {
-        Tokenizer tokenizer = Tokenizer.fromFile(Paths.get(savedModelUri));
-        return new HuggingFaceTokenizerEvaluator(tokenizer);
+        Tokenizer tokenizer;
+        try {
+            tokenizer = Tokenizer.fromFile(Paths.get(savedModelUri));
+        } catch (EvaluatorException e1) {
+            Path localSavedModelUri = Paths.get(path, savedModelUri);
+            try {
+                tokenizer = Tokenizer.fromFile(localSavedModelUri);
+            } catch (EvaluatorException e2) {
+                LOGGER.error("Cannot load HuggingFace tokenizer {}", savedModelUri, e1);
+                LOGGER.error("Cannot load HuggingFace tokenizer {}", localSavedModelUri, e2);
+                throw new EvaluatorException(
+                    String.format("Cannot load HuggingFace tokenizer %s or %s", savedModelUri, localSavedModelUri)
+                );
+            }
+        }
+        return new HuggingFaceTokenizerEvaluator(tokenizer, addSpecialTokens);
     }
 
     @Override

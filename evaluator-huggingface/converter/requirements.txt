@@ -1,0 +1,4 @@
+transformers>=3,<=4
+tokenizers>=0.8,<=0.9
+torch>=1.5,<=1.6
+tqdm>=4,<=5

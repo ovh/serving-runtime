@@ -1,7 +1,7 @@
 use std::sync::MutexGuard;
 
 use jni::objects::{JClass, JObject, JString};
-use jni::sys::{jobject, jobjectArray};
+use jni::sys::{jboolean, jobject, jobjectArray};
 use jni::JNIEnv;
 use tokenizers::{EncodeInput, Tokenizer};
 
@@ -37,16 +37,18 @@ pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_To
 
 /// Native method Tokenizer::encode(String)
 #[no_mangle]
-pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode__Ljava_lang_String_2(
+pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode__Ljava_lang_String_2Z(
     env: JNIEnv,
     tokenizer: JObject,
     input: JString,
+    add_special_tokens: jboolean,
 ) -> jobject {
     let result = || -> Result<jobject, Error> {
         // Encode input
         let input: String = env.get_string(input)?.into();
+        let add_special_tokens = add_special_tokens != 0;
         let tokenizer: MutexGuard<Tokenizer> = env.get_rust_field(tokenizer, "handle")?;
-        let encoding = tokenizer.encode(input, false)?;
+        let encoding = tokenizer.encode(input, add_special_tokens)?;
 
         // Wrap encoding in a Java object
         let encoding_class =
@@ -62,18 +64,23 @@ pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_To
 
 /// Native method Tokenizer::encode(String, String)
 #[no_mangle]
-pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode__Ljava_lang_String_2Ljava_lang_String_2(
+pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode__Ljava_lang_String_2Ljava_lang_String_2Z(
     env: JNIEnv,
     tokenizer: JObject,
     input1: JString,
     input2: JString,
+    add_special_tokens: jboolean,
 ) -> jobject {
     let result = || -> Result<jobject, Error> {
         // Encode input
         let input1: String = env.get_string(input1)?.into();
         let input2: String = env.get_string(input2)?.into();
+        let add_special_tokens = add_special_tokens != 0;
         let tokenizer: MutexGuard<Tokenizer> = env.get_rust_field(tokenizer, "handle")?;
-        let encoding = tokenizer.encode(EncodeInput::Dual(input1.into(), input2.into()), false)?;
+        let encoding = tokenizer.encode(
+            EncodeInput::Dual(input1.into(), input2.into()),
+            add_special_tokens,
+        )?;
 
         // Wrap encoding in a Java object
         let encoding_class =
@@ -89,16 +96,18 @@ pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_To
 
 /// Native method Tokenizer::encode(String[])
 #[no_mangle]
-pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode___3Ljava_lang_String_2(
+pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode___3Ljava_lang_String_2Z(
     env: JNIEnv,
     tokenizer: JObject,
     input: jobjectArray,
+    add_special_tokens: jboolean,
 ) -> jobject {
     let result = || -> Result<jobject, Error> {
         // Encode input
         let input_vec = jstring_array_to_vec(&env, input)?;
         let tokenizer: MutexGuard<Tokenizer> = env.get_rust_field(tokenizer, "handle")?;
-        let encoding = tokenizer.encode(input_vec, false)?;
+        let add_special_tokens = add_special_tokens != 0;
+        let encoding = tokenizer.encode(input_vec, add_special_tokens)?;
 
         // Wrap encoding in a Java object
         let encoding_class =
@@ -114,20 +123,22 @@ pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_To
 
 //Native method Tokenizer::encode(String[], String[])
 #[no_mangle]
-pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode___3Ljava_lang_String_2_3Ljava_lang_String_2(
+pub extern "system" fn Java_com_ovh_mls_serving_runtime_huggingface_tokenizer_Tokenizer_encode___3Ljava_lang_String_2_3Ljava_lang_String_2Z(
     env: JNIEnv,
     tokenizer: JObject,
     input1: jobjectArray,
     input2: jobjectArray,
+    add_special_tokens: jboolean,
 ) -> jobject {
     let result = || -> Result<jobject, Error> {
         // Encode input
         let input1_vec = jstring_array_to_vec(&env, input1)?;
         let input2_vec = jstring_array_to_vec(&env, input2)?;
+        let add_special_tokens = add_special_tokens != 0;
         let tokenizer: MutexGuard<Tokenizer> = env.get_rust_field(tokenizer, "handle")?;
         let encoding = tokenizer.encode(
             EncodeInput::Dual(input1_vec.into(), input2_vec.into()),
-            false,
+            add_special_tokens,
         )?;
 
         // Wrap encoding in a Java object

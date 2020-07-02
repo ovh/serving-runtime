@@ -44,34 +44,35 @@ public class Tokenizer {
      *
      * May throw an EvaluatorException
      */
-    public native Encoding encode(String input);
+    public native Encoding encode(String input, boolean addSpecialTokens);
 
     /**
      * Encode the given input
      *
      * May throw an EvaluatorException
      */
-    public native Encoding encode(String input1, String input2);
+    public native Encoding encode(String input1, String input2, boolean addSpecialTokens);
 
     /**
      * Encode the given input
      *
      * May throw an EvaluatorException
      */
-    public native Encoding encode(String[] tokens);
+    public native Encoding encode(String[] tokens, boolean addSpecialTokens);
 
     /**
      * Encode the given input
      *
      * May throw an EvaluatorException
      */
-    public native Encoding encode(String[] tokens1, String[] tokens2);
+    public native Encoding encode(String[] tokens1, String[] tokens2, boolean addSpecialTokens);
 
     /**
      * Give back the Rust pointer to be freed
      */
     private native void releaseHandle();
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void finalize() throws Throwable {
         try {

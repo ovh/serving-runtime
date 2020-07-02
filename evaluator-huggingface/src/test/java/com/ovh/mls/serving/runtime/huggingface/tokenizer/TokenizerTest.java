@@ -11,7 +11,7 @@ class TokenizerTest {
     @Test
     void fromFileEncodeString() {
         Tokenizer tokenizer = Tokenizer.fromFile(Path.of("src/test/resources/tokenizer.json"));
-        Encoding encoding = tokenizer.encode("This is a test");
+        Encoding encoding = tokenizer.encode("This is a test", false);
 
         Assertions.assertFalse(encoding.isEmpty());
         Assertions.assertEquals(11, encoding.size());
@@ -63,7 +63,7 @@ class TokenizerTest {
     @Test
     void fromFileEncodeTokens() {
         Tokenizer tokenizer = Tokenizer.fromFile(Path.of("src/test/resources/tokenizer.json"));
-        Encoding encoding = tokenizer.encode("This is a test".split(" "));
+        Encoding encoding = tokenizer.encode("This is a test".split(" "), false);
 
         Assertions.assertArrayEquals(
             new String[]{"Ġ", "T", "h", "is", "Ġ", "is", "Ġa", "Ġt", "e", "s", "t"},
@@ -74,7 +74,7 @@ class TokenizerTest {
     @Test
     void fromFileEncodeDualString() {
         Tokenizer tokenizer = Tokenizer.fromFile(Path.of("src/test/resources/tokenizer.json"));
-        Encoding encoding = tokenizer.encode("This is a test", "and a second sentence");
+        Encoding encoding = tokenizer.encode("This is a test", "and a second sentence", false);
 
         Assertions.assertArrayEquals(
             new String[]{
@@ -88,7 +88,7 @@ class TokenizerTest {
     @Test
     void fromFileEncodeDualTokens() {
         Tokenizer tokenizer = Tokenizer.fromFile(Path.of("src/test/resources/tokenizer.json"));
-        Encoding encoding = tokenizer.encode("This is a test".split(" "), "and a second sentence".split(" "));
+        Encoding encoding = tokenizer.encode("This is a test".split(" "), "and a second sentence".split(" "), false);
 
         Assertions.assertArrayEquals(
             new String[]{

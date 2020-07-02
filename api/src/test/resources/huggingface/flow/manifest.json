@@ -1,0 +1,33 @@
+{
+  "type": "flow",
+  "evaluator_manifests": [
+    {
+      "type": "huggingface_tokenizer",
+      "saved_model_uri": "../tokenizer/tokenizer.json",
+      "add_special_tokens": false
+    },
+    {
+      "type": "torch_script",
+      "saved_model_uri": "transformer.ts",
+      "inputs": [
+        {
+          "name": "ids",
+          "shape": [
+            1,
+            -1
+          ],
+          "type": "long"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "shape": [
+            -1
+          ],
+          "type": "float"
+        }
+      ]
+    }
+  ]
+}

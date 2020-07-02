@@ -21,6 +21,7 @@
 
     <build>
         <resources>
+            <!-- Bundle JNI binding in JAR -->
             <resource>
                 <directory>huggingface-tokenizer-jni/target/release</directory>
                 <includes>
