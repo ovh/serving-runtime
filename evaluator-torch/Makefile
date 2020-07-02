@@ -11,20 +11,20 @@ else
 		OS = linux
 	endif
 	ifeq ($(UNAME_S),Darwin)
-		OS = mac
+		OS = darwin
 	endif
 endif
 
 .PHONY: initialize
 initialize: initialize-${OS}
 
-.PHONY: initialize-mac
-initialize-mac:
-	curl "https://download.pytorch.org/libtorch/cpu/libtorch-macos-1.5.1.zip" -o libtorch-mac-cpu.zip && \
-	unzip -q libtorch-mac-cpu.zip && \
-	rm -rf libtorch-mac-cpu && mv -vf libtorch libtorch-mac-cpu && rm -v libtorch-mac-cpu.zip
+.PHONY: initialize-darwin
+initialize-darwin:
+	curl "https://download.pytorch.org/libtorch/cpu/libtorch-macos-1.5.1.zip" -o libtorch-darwin-cpu.zip && \
+	unzip -q libtorch-darwin-cpu.zip && \
+	rm -rf libtorch-darwin-cpu && mv -vf libtorch libtorch-darwin-cpu && rm -v libtorch-darwin-cpu.zip
 	# Fix OpenMP https://github.com/pytorch/pytorch/issues/38607
-	install_name_tool -id @rpath/libiomp5.dylib libtorch-mac-cpu/lib/libiomp5.dylib
+	install_name_tool -id @rpath/libiomp5.dylib libtorch-darwin-cpu/lib/libiomp5.dylib
 
 .PHONY: initialize-linux
 initialize-linux:

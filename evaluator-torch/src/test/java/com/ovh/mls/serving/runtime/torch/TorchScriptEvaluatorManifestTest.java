@@ -1,4 +1,4 @@
-package com.ovh.mls.serving.runtime.pytorch;
+package com.ovh.mls.serving.runtime.torch;
 
 import com.ovh.mls.serving.runtime.core.DataType;
 import com.ovh.mls.serving.runtime.core.EvaluatorManifest;

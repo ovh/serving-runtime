@@ -1,3 +1,9 @@
+# Get libtorch
+
+```bash
+make initialize
+```
+
 # Serve a TorchScript model
 
 The model MUST be a TorchScript model, to convert pyTorch models see below.

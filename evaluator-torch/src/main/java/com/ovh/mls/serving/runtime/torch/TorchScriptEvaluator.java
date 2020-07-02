@@ -1,4 +1,4 @@
-package com.ovh.mls.serving.runtime.pytorch;
+package com.ovh.mls.serving.runtime.torch;
 
 import com.ovh.mls.serving.runtime.core.AbstractTensorEvaluator;
 import com.ovh.mls.serving.runtime.core.DataType;

@@ -1,4 +1,4 @@
-package com.ovh.mls.serving.runtime.pytorch;
+package com.ovh.mls.serving.runtime.torch;
 
 import com.facebook.jni.CppException;
 import com.facebook.soloader.nativeloader.NativeLoader;
@@ -43,7 +43,7 @@ public class TorchScriptEvaluatorManifest implements EvaluatorManifest {
             NativeUtils.loadLibraryFromJar("/libgomp-7c85b1e2.so.1");
         } catch (Exception ignored) {
         }
-        // Mac
+        // Darwin
         try {
             NativeLoader.loadLibrary("iomp5");
         } catch (Exception ignored) {
