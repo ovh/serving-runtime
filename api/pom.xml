@@ -12,7 +12,7 @@
     <artifactId>api</artifactId>
 
     <properties>
-        <jetty.version>9.4.19.v20190610</jetty.version>
+        <jetty.version>9.4.34.v20201102</jetty.version>
         <serving.version>1.0.1-SNAPSHOT</serving.version>
         <guice.version>4.2.2</guice.version>
         <typesafe-guice.version>0.1.0</typesafe-guice.version>
