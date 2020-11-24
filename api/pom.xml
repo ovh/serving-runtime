@@ -12,12 +12,12 @@
     <artifactId>api</artifactId>
 
     <properties>
-        <jetty.version>9.4.19.v20190610</jetty.version>
+        <jetty.version>9.4.34.v20201102</jetty.version>
         <serving.version>1.0.1-SNAPSHOT</serving.version>
         <guice.version>4.2.2</guice.version>
         <typesafe-guice.version>0.1.0</typesafe-guice.version>
         <resteasy.version>4.1.1.Final</resteasy.version>
-        <log4j2.version>2.7</log4j2.version>
+        <log4j2.version>2.14.0</log4j2.version>
         <metrics.version>0.5.0</metrics.version>
         <swagger-jaxrs2.version>2.0.9</swagger-jaxrs2.version>
 
