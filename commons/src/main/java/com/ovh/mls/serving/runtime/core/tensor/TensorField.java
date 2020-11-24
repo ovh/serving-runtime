@@ -57,8 +57,8 @@ public class TensorField extends Field {
         return new TensorShape(shape);
     }
 
-    public void setShape(String shape) {
-        this.shape = new TensorShape(shape).getArrayShape();
+    public void setShape(int[] shape) {
+        this.shape = shape;
     }
 
     public List<TensorIndex> getFields() {

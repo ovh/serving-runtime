@@ -1,4 +1,5 @@
-tensorflow==1.15.2
+tensorflow==1.15.4
 pyinstaller>=3.5,<=3.6
 absl-py==0.8.1
 setuptools>=41.0.1,<45.0.0
+h5py==2.10.0

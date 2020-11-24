@@ -38,6 +38,18 @@ build:
 test:
 	mvn -B verify -DtrimStackTrace=false -Devaluator.tensorflow.h5_converter.path=$(H5_CONVERTER) -P$(MAVEN_PROFILE)
 
-.PHONY: initialize
-initialize:
+.PHONY: deploy
+deploy:
+	mvn -B deploy -DskipTests -P$(MAVEN_PROFILE)
+
+.PHONY: initialize-tensorflow
+initialize-tensorflow:
 	make -C evaluator-tensorflow/h5_converter build
+
+.PHONY: initialize-huggingface
+initialize-huggingface:
+	make -C evaluator-huggingface/huggingface-tokenizer-jni
+
+.PHONY: initialize-torch
+initialize-torch:
+	make -C evaluator-torch

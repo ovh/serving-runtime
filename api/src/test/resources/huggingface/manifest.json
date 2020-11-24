@@ -1,0 +1,4 @@
+{
+  "type": "huggingface_tokenizer",
+  "saved_model_uri": "src/test/resources/huggingface/tokenizer.json"
+}

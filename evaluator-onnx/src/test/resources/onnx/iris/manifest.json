@@ -4,7 +4,7 @@
   "inputs": [
     {
       "name": "float_input",
-      "shape": "(?, 4)",
+      "shape": [-1, 4],
       "type": "float",
       "fields": [
         {
@@ -29,7 +29,7 @@
   "outputs": [
     {
       "name": "output_label",
-      "shape": "(?)",
+      "shape": [-1],
       "type": "long",
       "fields": [
         {
@@ -40,7 +40,7 @@
     },
     {
       "name": "output_probability",
-      "shape": "(?, 3)",
+      "shape": [-1, 3],
       "type": "float",
       "fields": [
         {

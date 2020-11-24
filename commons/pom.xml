@@ -12,7 +12,6 @@
     <artifactId>commons</artifactId>
 
     <properties>
-        <joss.version>0.10.3</joss.version>
         <tablesaw.version>0.36.0</tablesaw.version>
         <guava.version>28.1-jre</guava.version>
         <config.version>1.3.4</config.version>
@@ -35,9 +34,19 @@
             <version>4.8.41</version>
         </dependency>
         <dependency>
-            <groupId>org.javaswift</groupId>
-            <artifactId>joss</artifactId>
-            <version>${joss.version}</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.10</version>
         </dependency>
         <dependency>
             <groupId>tech.tablesaw</groupId>
@@ -45,14 +54,9 @@
             <version>${tablesaw.version}</version>
         </dependency>
         <dependency>
-            <groupId>tech.tablesaw</groupId>
-            <artifactId>tablesaw-jsplot</artifactId>
-            <version>${tablesaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>tech.tablesaw</groupId>
-            <artifactId>tablesaw-json</artifactId>
-            <version>${tablesaw.version}</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.10.0.pr1</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>

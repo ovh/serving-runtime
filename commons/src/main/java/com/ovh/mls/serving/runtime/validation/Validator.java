@@ -16,7 +16,7 @@ public class Validator {
      * @param evaluator instance to check
      * @throws EvaluatorException if one check fails an exception is thrown
      */
-    public static void validate(Evaluator evaluator) throws EvaluatorException {
+    public static void validate(Evaluator<?> evaluator) throws EvaluatorException {
         if (evaluator.getClass().isAnnotationPresent(NumberOnly.class)) {
             checkNumbers(evaluator);
         }
@@ -29,7 +29,7 @@ public class Validator {
      * @param evaluator evaluator only supporting Number input
      * @throws EvaluatorException throws an exception if one field is not a Number type
      */
-    private static void checkNumbers(Evaluator evaluator) throws EvaluatorException {
+    private static void checkNumbers(Evaluator<?> evaluator) throws EvaluatorException {
 
         String nonNumberFields = evaluator.getInputs().stream()
             .filter(field -> !DataType.isNumberType(field.getType()))

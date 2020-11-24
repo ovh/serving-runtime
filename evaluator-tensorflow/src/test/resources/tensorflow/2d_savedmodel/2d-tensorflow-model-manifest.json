@@ -4,7 +4,7 @@
   "inputs": [
     {
       "name": "input",
-      "shape": "(?, 8)",
+      "shape": [-1, 8],
       "type": "float",
       "fields": [
         {
@@ -29,7 +29,7 @@
   "outputs": [
     {
       "name": "output",
-      "shape": "(?, 1)",
+      "shape": [-1, 1],
       "type": "float",
       "fields": [
         {

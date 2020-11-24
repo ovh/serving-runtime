@@ -4,7 +4,7 @@
   "inputs": [
     {
       "name": "pclass",
-      "shape": "(?, 1)",
+      "shape": [-1, 1],
       "type": "string",
       "fields": [
         {
@@ -15,7 +15,7 @@
     },
     {
       "name": "sex",
-      "shape": "(?, 1)",
+      "shape": [-1, 1],
       "type": "string",
       "fields": [
         {
@@ -26,7 +26,7 @@
     },
     {
       "name": "age",
-      "shape": "(?, 1)",
+      "shape": [-1, 1],
       "type": "float",
       "fields": [
         {
@@ -37,7 +37,7 @@
     },
     {
       "name": "fare",
-      "shape": "(?, 1)",
+      "shape": [-1, 1],
       "type": "float",
       "fields": [
         {
@@ -48,7 +48,7 @@
     },
     {
       "name": "embarked",
-      "shape": "(?, 1)",
+      "shape": [-1, 1],
       "type": "string",
       "fields": [
         {
@@ -61,7 +61,7 @@
   "outputs": [
     {
       "name": "output_label",
-      "shape": "(?)",
+      "shape": [-1],
       "type": "long",
       "fields": [
         {
@@ -71,7 +71,7 @@
     },
     {
       "name": "output_probability",
-      "shape": "(?, 2)",
+      "shape": [-1, 2],
       "type": "float",
       "fields": [
         {

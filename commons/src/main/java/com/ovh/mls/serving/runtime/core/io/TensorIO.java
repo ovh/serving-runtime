@@ -108,7 +108,7 @@ public class TensorIO {
      *
      * @param fields Tensor fields that we want to keep
      */
-    public void retainFields(List<Field> fields) {
+    public void retainFields(List<? extends Field> fields) {
         Set<String> retainingNames = new HashSet<>();
 
         for (Field field : fields) {

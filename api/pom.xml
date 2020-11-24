@@ -12,14 +12,20 @@
     <artifactId>api</artifactId>
 
     <properties>
-        <jetty.version>9.4.19.v20190610</jetty.version>
+        <jetty.version>9.4.34.v20201102</jetty.version>
         <serving.version>1.0.1-SNAPSHOT</serving.version>
         <guice.version>4.2.2</guice.version>
         <typesafe-guice.version>0.1.0</typesafe-guice.version>
         <resteasy.version>4.1.1.Final</resteasy.version>
-        <log4j2.version>2.7</log4j2.version>
+        <log4j2.version>2.14.0</log4j2.version>
         <metrics.version>0.5.0</metrics.version>
         <swagger-jaxrs2.version>2.0.9</swagger-jaxrs2.version>
+
+        <!-- Include integration tests only when corresponding profile in activated -->
+        <it.exclude.onnx>**/onnx/*</it.exclude.onnx>
+        <it.exclude.tensorflow>**/tensorflow/*</it.exclude.tensorflow>
+        <it.exclude.huggingface>**/huggingface/*</it.exclude.huggingface>
+        <it.exclude.torch>**/torch/*</it.exclude.torch>
     </properties>
 
     <profiles>
@@ -36,9 +42,22 @@
                     <artifactId>evaluator-onnx</artifactId>
                     <version>${serving.version}</version>
                 </dependency>
+                <dependency>
+                    <groupId>com.ovh.mls.serving.runtime</groupId>
+                    <artifactId>evaluator-huggingface</artifactId>
+                    <version>${serving.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.ovh.mls.serving.runtime</groupId>
+                    <artifactId>evaluator-torch</artifactId>
+                    <version>${serving.version}</version>
+                </dependency>
             </dependencies>
             <properties>
-                <test.regex>none</test.regex>
+                <it.exclude.onnx>none</it.exclude.onnx>
+                <it.exclude.tensorflow>none</it.exclude.tensorflow>
+                <it.exclude.huggingface>none</it.exclude.huggingface>
+                <it.exclude.torch>none</it.exclude.torch>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -54,7 +73,7 @@
                 </dependency>
             </dependencies>
             <properties>
-                <test.regex>**/tensorflow/*</test.regex>
+                <it.exclude.onnx>none</it.exclude.onnx>
             </properties>
         </profile>
         <profile>
@@ -67,7 +86,33 @@
                 </dependency>
             </dependencies>
             <properties>
-                <test.regex>**/onnx/*</test.regex>
+                <it.exclude.tensorflow>none</it.exclude.tensorflow>
+            </properties>
+        </profile>
+        <profile>
+            <id>huggingface</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.ovh.mls.serving.runtime</groupId>
+                    <artifactId>evaluator-huggingface</artifactId>
+                    <version>${serving.version}</version>
+                </dependency>
+            </dependencies>
+            <properties>
+                <it.exclude.huggingface>none</it.exclude.huggingface>
+            </properties>
+        </profile>
+        <profile>
+            <id>torch</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.ovh.mls.serving.runtime</groupId>
+                    <artifactId>evaluator-torch</artifactId>
+                    <version>${serving.version}</version>
+                </dependency>
+            </dependencies>
+            <properties>
+                <it.exclude.torch>none</it.exclude.torch>
             </properties>
         </profile>
     </profiles>
@@ -118,6 +163,10 @@
             <exclusions>
                 <exclusion>
                     <artifactId>jackson-databind</artifactId>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jackson-core</artifactId>
                     <groupId>com.fasterxml.jackson.core</groupId>
                 </exclusion>
             </exclusions>
@@ -216,6 +265,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -257,7 +307,10 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>${test.regex}</exclude>
+                        <exclude>${it.exclude.onnx}</exclude>
+                        <exclude>${it.exclude.tensorflow}</exclude>
+                        <exclude>${it.exclude.huggingface}</exclude>
+                        <exclude>${it.exclude.torch}</exclude>
                     </excludes>
                 </configuration>
             </plugin>

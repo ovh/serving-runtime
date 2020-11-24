@@ -1,7 +1,7 @@
 # Serving Runtime
 Exposes a serialized machine learning model through a HTTP API written in Java.
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)]() [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ai.svg)](https://gitter.im/ovh/ai) 
+![TUs & TIs](https://github.com/ovh/serving-runtime/workflows/TUs%20&%20TIs/badge.svg?branch=master) [![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)]() [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ai.svg)](https://gitter.im/ovh/ai) 
  
  **This project is under active development**
  
@@ -12,6 +12,7 @@ The purpose of this project is to expose a generic HTTP API from a machine learn
 Supported serialized models are :
 * [ONNX][ONNX] `1.5`
 * TensorFlow `<=1.15` SavedModel or HDF5
+* [HuggingFace Tokenizer](https://github.com/huggingface/tokenizers)
  
 ## Prerequisites
 
@@ -23,34 +24,8 @@ Supported serialized models are :
 * Python `3.7`
 * TensorFlow `<=1.15` (`pip install tensorflow`)
 
-### ONNX support (Optional)
-<aside class="notice">
-<p>If you use the API from the docker image this step is not necessary as it will be built within the image.</p>
-</aside>
-  
-To enable the ONNX support the project requires the use of the Java onnxruntime which is not yet available on Maven repository. You will need to build and add it to your path.
-
-First clone the repository:
-```bash
-git clone --recursive https://github.com/microsoft/onnxruntime.git
-cd onnxruntime
-```
-
-Then build the onnxruntime for Java. To do so you will first required both [cmake](https://cmake.org/download/) and [gradle 6](https://gradle.org/install/) or higher. Once both are available in your path (beware depending on your machine this step can take some time):
-```bash
-./build.sh --config RelWithDebInfo --build_shared_lib --build_java --parallel
-```
-
-Then you need to install the generated JAR:
-```bash 
-mvn install:install-file \
--Dfile=build/Linux/RelWithDebInfo/java/build/libs/onnxruntime-1.2.0-all.jar \
--DgroupId=ai \
--DartifactId=onnxruntime \
--Dversion=1.2.0-all \
--Dpackaging=jar \
--DgeneratePom=true
-```
+For HuggingFace tokenizer :
+* Cargo (Rust stable)
 
 ### HDF5 support (Optional)
 <aside class="notice">
@@ -59,17 +34,34 @@ mvn install:install-file \
 
 The Tensorflow module requires the support of HDF5 files through the creation of an executable `h5_converter` wich exports the model from HDF5 file to a Tensorflow SavedModel (`.pb`).  
 
-To generate the converter simply use the initialize goal of the `Makefile`:
+To generate the converter simply use the initialize_tensorflow goal of the `Makefile`:
 ```bash
-make initialize
+make initialize_tensorflow
 ```
 The generated executable can be found here: `evaluator-tensorflow/h5_converter/dist/h5_converter`
 
+### HuggingFace (Optional)
+
+To build the Java binding use the initialize_huggingface goal of the `Makefile`:
+```bash
+make initialize_huggingface
+```
+
+### Torch (Optional)
+
+To install libtorch use initialize_torch goal of the `Makefile`:
+```bash
+make initialize_torch
+```
+
+[Convert pyTorch model and more](evaluator-torch/README.md)
+
 ## Build & Launch the project locally
 Several profiles are available depending on the support you require for the built project.
-- `full` which includes both Tensorflow and ONNX, requires the [ONNX support](#onnx-support-optional) and [HDF5 support](#hdf5-support-optional)
+- `full` which includes both Tensorflow and ONNX, requires the [ONNX support](#onnx-support-optional), [HDF5 support](#hdf5-support-optional) and [Torch support](#torch-optional).
 - `tensorflow` which only includes Tensorflow, requires the [HDF5 support](#hdf5-support-optional)
 - `onnx` which only includes ONNX, requires the [ONNX support](#onnx-support-optional). 
+- `torch` which only includes Torch, requires the [Torch support](#torch-optional). 
 
 Set your desired profile:
 ```bash

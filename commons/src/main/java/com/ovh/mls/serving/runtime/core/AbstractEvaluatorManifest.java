@@ -3,25 +3,25 @@ package com.ovh.mls.serving.runtime.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractEvaluatorManifest implements EvaluatorManifest {
+public abstract class AbstractEvaluatorManifest<F extends Field> implements EvaluatorManifest {
 
-    private List<Field> inputs = new ArrayList<>();
-    private List<Field> outputs = new ArrayList<>();
+    private List<F> inputs = new ArrayList<>();
+    private List<F> outputs = new ArrayList<>();
 
-    public List<Field> getInputs() {
+    public List<F> getInputs() {
         return inputs;
     }
 
-    public AbstractEvaluatorManifest setInputs(List<Field> inputs) {
+    public AbstractEvaluatorManifest<F> setInputs(List<F> inputs) {
         this.inputs = inputs;
         return this;
     }
 
-    public List<Field> getOutputs() {
+    public List<F> getOutputs() {
         return outputs;
     }
 
-    public AbstractEvaluatorManifest setOutputs(List<Field> outputs) {
+    public AbstractEvaluatorManifest<F> setOutputs(List<F> outputs) {
         this.outputs = outputs;
         return this;
     }

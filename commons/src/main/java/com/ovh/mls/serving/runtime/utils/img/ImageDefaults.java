@@ -203,7 +203,7 @@ public class ImageDefaults {
         return maybeBuilder.get();
     }
 
-    public static boolean supportSingleImageConversion(List<Field> fields) {
+    public static boolean supportSingleImageConversion(List<? extends Field> fields) {
         if (fields.size() == 1) {
             Field field = fields.get(0);
             if (field instanceof TensorField) {

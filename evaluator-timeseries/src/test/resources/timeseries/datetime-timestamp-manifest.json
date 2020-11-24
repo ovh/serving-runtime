@@ -1,0 +1,18 @@
+{
+  "inputs": [
+    {
+      "name": "timestamp-seconds",
+      "type": "long",
+      "shape": [-1, -1],
+      "format": "TS_S"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "date",
+      "type": "string",
+      "shape": [-1, -1],
+      "format": "yyyy-MM-dd HH:mm:ss"
+    }
+  ]
+}
