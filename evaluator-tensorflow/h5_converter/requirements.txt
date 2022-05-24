@@ -1,4 +1,4 @@
-tensorflow==1.15.4
+tensorflow==2.6.4
 pyinstaller>=3.5,<=3.6
 absl-py==0.8.1
 setuptools>=41.0.1,<45.0.0
