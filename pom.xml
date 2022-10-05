@@ -68,7 +68,7 @@
 
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <jackson.version>2.11.0</jackson.version>
+        <jackson.version>2.12.6.1</jackson.version>
         <junit.version>5.4.2</junit.version>
         <commons-collections4.version>4.3</commons-collections4.version>
     </properties>
